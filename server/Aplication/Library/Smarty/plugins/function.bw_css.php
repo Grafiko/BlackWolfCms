@@ -1,34 +1,23 @@
 <?php
 function smarty_function_bw_css($params, $template)
 {
+	$_tpl_config = $template->getTemplateVars('_config');
+	Zend_Debug::dump($_tpl_config);
 	if (empty($params['file'])) {
 		trigger_error("css: nie podano parametru <b>file</b>");
 		return;
 	}
 
-	if (empty($params['type']) && empty($params['dir'])) {
-		trigger_error("css: nie podano parametru <b>type</b> i <b>dir</b>");
-		return;
-	}
-
-	if (!empty($params['type'])) {
-		switch ($params['type']) {
-			case 'admin':
-				$dir = System_Url::getBaseUrl() . PUBLIC_PATH_ASSET_ADMIN_CSS . '/';
-				break;
-			case 'site':
-			default:
-				$dir = System_Url::getBaseUrl() . PUBLIC_PATH_ASSET_SITE_CSS . '/';
-				break;
-		}
+	if (empty($params['dir'])) {
+		$path_css = $_tpl_config['public_path'] . DS . 'css';
 	} elseif (!empty($params['dir'])) {
-		$dir = System_Url::getBaseUrl() . $params['dir'];
+		$path_css = System_Url::getBaseUrl() . $params['dir'];
 	}
 
-	if (!file_exists($dir . $params['file'])) {
-		trigger_error("css: wybrany plik <b>{$dir}{$params['file']}</b> nie istnieje.");
+	if (!System_Utilities::fileExists(ROOT . DS . $path_css. DS . $params['file'])) {
+		trigger_error("css: wybrany plik <b>{$params['file']}</b> nie istnieje.");
 		return;
 	}
 
-	System_MetaData::getInstance()->addCss($dir . $params['file']);
+	System_MetaData::getInstance()->addCss(DS . $path_css . DS . $params['file']);
 }

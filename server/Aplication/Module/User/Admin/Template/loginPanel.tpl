@@ -1,5 +1,7 @@
+{bw_css file="style.css"}
+
 <div id="login">
-	<div class="logo"><img src="{$PATH.IMG}/logo_login.png" /></div>
+	<div class="logo"><img src="/asset/admin/user/loginPanel/image/logo.png" /></div>
 	<div class="bg">
 		<div id="window">
 			<div class="top">Zaloguj do panelu</div>
@@ -20,7 +22,7 @@
 						<a class="btnSmall orange bold last" style="font-size:12px;" href="javascript:void(0);" onClick="$('form[name=login]').submit();">Zaloguj</a>
 					</div>
 				</form>
-				<div class="help"><img src="{$PATH.IMG}/loginZapytanie.png" class="fRight" />W wypadku zaginięcia hasła prosimy o kontakt bezpośredni z operatorami<br>Black Wolf CMS - <a href="mailto:info@blackwolfcms.pl">info@blackwolfcms.pl</a><br><br><br></div>
+				<div class="help"><img src="/asset/admin/user/loginPanel/image/loginZapytanie.png" class="fRight" />W wypadku zaginięcia hasła prosimy o kontakt bezpośredni z operatorami<br>Black Wolf CMS - <a href="mailto:info@blackwolfcms.pl">info@blackwolfcms.pl</a><br><br><br></div>
 			</div>
 		</div>
 	</div>

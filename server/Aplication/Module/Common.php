@@ -18,7 +18,7 @@ abstract class Module_Common
 
 	protected function checkModuleAction($action)
 	{
-		if(null !== $action) {
+		if (null !== $action) {
 			$className = get_class($this) . '_Action';
 			$execute = new $className($this);
 			$execute->execute($action);
@@ -47,7 +47,7 @@ abstract class Module_Common
 		$className = get_class($this);
 		$_tmp = explode('_', $className);
 		unset($_tmp[0]);
-		foreach($_tmp as $key=>$value) {
+		foreach ($_tmp as $key=>$value) {
 			$tpl_path.= DS . $value;
 		}
 
@@ -59,17 +59,20 @@ abstract class Module_Common
 
 	protected function render($tpl_name, $values = null, $tpl_path = null)
 	{
-		if($tpl_path) {
+		if ($tpl_path) {
 			$tpl = $tpl_path . DS . $tpl_name;
 		} else {
 			$tpl = $this->_tpl_path . DS . $tpl_name;
 		}
 
-		if(file_exists($tpl)) {
+		if (file_exists($tpl)) {
+			$config = System_Tpl::checkConfig($tpl);
+//Zend_Debug::dump($config);
 			$output = new smarty();
+			$output->assign('_config', $config);
 
-			if(is_array($values)) {
-				foreach($values as $name => $value) {
+			if (is_array($values)) {
+				foreach ($values as $name => $value) {
 					$output->assign($name, $value);
 				}
 			}

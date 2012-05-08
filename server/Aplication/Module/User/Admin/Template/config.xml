@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configdata>
+	<tpl name="loginPanel.tpl">
+		<files public_path="/asset/admin/user/loginPanel">
+			<css>style.css</css>
+			<image>loginBg.png</image>
+			<image>loginWindowTop.png</image>
+			<image>loginWindowBottom.png</image>
+			<image>loginZapytanie.png</image>
+			<image>cornerTopLeft_111111.png</image>
+			<image>cornerTopRight_111111.png</image>
+			<image>cornerBottomLeft_111111.png</image>
+			<image>cornerBottomRight_111111.png</image>
+			<image>logo.png</image>
+			<image>input_EEB300.png</image>
+			<image>button.png</image>
+		</files>
+	</tpl>
+</configdata>

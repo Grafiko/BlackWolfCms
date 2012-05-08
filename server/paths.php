@@ -17,6 +17,8 @@ define('ROOT_APLICATION_TEMP_TPL', ROOT_APLICATION_TEMP . DS .'tpl');
 define('ROOT_APLICATION_TEMP_TPL_CACHE', ROOT_APLICATION_TEMP_TPL . DS .'cache');
 define('ROOT_APLICATION_TEMP_TPL_COMPLIE', ROOT_APLICATION_TEMP_TPL . DS . 'compile');
 define('ROOT_ASSET', ROOT . DS . 'asset');
+define('ROOT_ASSET_ADMIN', ROOT_ASSET . DS . 'admin');
+define('ROOT_ASSET_SITE', ROOT_ASSET . DS . 'site');
 
 
 /*** OTHERS ***/

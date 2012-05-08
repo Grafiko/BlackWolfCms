@@ -32,7 +32,8 @@ class System_MetaData
 
 	public function addCss($name)
 	{
-		if(!in_array($name, $this->css)) {
+		$name = str_replace(DS, '/', $name);
+		if (!in_array($name, $this->css)) {
 			$this->css[$name] = '<link href="'.$name.'" rel="stylesheet" type="text/css" />';
 		}
 	}
@@ -49,7 +50,8 @@ class System_MetaData
 
 	public function addJs($name)
 	{
-		if(!in_array($name, $this->js)) {
+		$name = str_replace(DS, '/', $name);
+		if (!in_array($name, $this->js)) {
 		  $this->js[$name] = '<script type="text/javascript" src="'.$name.'"></script>';
 		}
 	}
@@ -94,20 +96,20 @@ class System_MetaData
 
 	public function display()
 	{
-		$setting = Zend_Registry::get('setting');
+//		$setting = Zend_Registry::get('setting');
 		$config = Zend_Registry::get('config');
-
-		if($setting['favicon']) {
+/*
+		if ($setting['favicon']) {
 			$favicon = '<link rel="shortcut icon" href="'.$config->webhost . '/' . $setting['favicon'].'" />';
 		}
-
-		if($this->title) {
+*/
+		if ($this->title) {
 			$display = $this->title;
 		}
-		if($this->meta_description) {
+		if ($this->meta_description) {
 			$display.= "\n\t".$this->meta_description;
 		}
-		if($this->meta_keywords) {
+		if ($this->meta_keywords) {
 			$display.= "\n\t".$this->meta_keywords;
 		}
 
@@ -123,4 +125,3 @@ class System_MetaData
 	}
 
 }
-?>
