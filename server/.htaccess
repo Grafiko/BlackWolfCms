@@ -1,0 +1,38 @@
+# Handle real errors with index.php
+# ErrorDocument 404 /index.php
+#
+
+# challenging but recommended way of developing 
+#php_value allow_call_time_pass_reference 0 
+# 
+Options +FollowSymLinks 
+rewriteEngine on 
+# 
+
+# AddType TYPE/SUBTYPE EXTENSION     
+AddType audio/mpeg mp3
+AddType audio/mp4 m4a
+AddType audio/ogg ogg
+AddType audio/ogg oga
+AddType audio/webm webma
+AddType audio/wav wav
+     
+AddType video/mp4 mp4
+AddType video/mp4 m4v
+AddType video/ogg ogv
+AddType video/webm webm
+AddType video/webm webmv
+
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^/index\.php$ 
+RewriteCond %{REQUEST_URI} !^/robots.txt$ 
+RewriteCond %{REQUEST_URI} !\.(all|eml|gif|jpe?g|png|css|js|pdf|doc|xml|swf|htc|txt|htm|php|js|jpg|zip|exe|rar|xls|tif|mpg|ico|eot|svg|svgz|ttf|woff)$
+RewriteCond %{REQUEST_URI} !^/asset(.+)$
+RewriteCond %{REQUEST_URI} !^/files(.+)$
+RewriteCond %{REQUEST_URI} !^/library(.+)$
+RewriteCond %{REQUEST_URI} !^/connector(.+)$
+RewriteCond %{REQUEST_URI} !^/miniaturka(.+)$
+RewriteCond %{REQUEST_URI} !^/imagefilter(.+)$
+RewriteCond %{REQUEST_URI} !^/upload(.+)$
+RewriteCond %{REQUEST_URI} !^/download(.+)$
+RewriteRule (.*) /index.php [L] 
