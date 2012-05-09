@@ -3,15 +3,19 @@ abstract class Module_Common
 {
 	protected $_toDisplay;
 	protected $_tpl_path;
+	protected $_root_module;
 	protected $_page;
 	protected $_data;
+	protected $_translate;
 
 #---------------------------------------------------------------------------------------------------------
 
 	public function __construct()
 	{
 		$this->_page = System_Url::getGP('page', 1);
+		$this->setModulePath();
 		$this->setTplPath();
+		$this->_initTranslate();
 	}
 
 #---------------------------------------------------------------------------------------------------------
@@ -41,6 +45,21 @@ abstract class Module_Common
 
 #---------------------------------------------------------------------------------------------------------
 
+	protected function setModulePath()
+	{
+		$tpl_path = ROOT_APLICATION_MODULE;
+		$className = get_class($this);
+		$_tmp = explode('_', $className);
+		unset($_tmp[0]);
+		foreach ($_tmp as $key=>$value) {
+			$tpl_path.= DS . $value;
+		}
+
+		$this->_root_module = $tpl_path;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	protected function setTplPath()
 	{
 		$tpl_path = ROOT_APLICATION_MODULE;
@@ -52,7 +71,6 @@ abstract class Module_Common
 		}
 
 		$this->_tpl_path = $tpl_path . DS . 'Template';
-		//Zend_Debug::dump($tpl_path);
 	}
 
 #---------------------------------------------------------------------------------------------------------
@@ -67,9 +85,10 @@ abstract class Module_Common
 
 		if (file_exists($tpl)) {
 			$config = System_Tpl::checkConfig($tpl);
-//Zend_Debug::dump($config);
+
 			$output = new smarty();
 			$output->assign('_config', $config);
+			$output->assign('_translate', $this->_translate);
 
 			if (is_array($values)) {
 				foreach ($values as $name => $value) {
@@ -83,6 +102,21 @@ abstract class Module_Common
 		}
 
 		return $result;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	protected function _initTranslate()
+	{
+		$language = Zend_Registry::get('language');
+		$file = $this->_root_module . DS . 'i18n' . DS . $language . '.mo';
+		if (file_exists($file)) {
+			$this->_translate = new Zend_Translate(array(
+					'adapter' => 'gettext',
+					'content' => $file,
+					'locale'  => $language
+			));
+		}
 	}
 
 #---------------------------------------------------------------------------------------------------------

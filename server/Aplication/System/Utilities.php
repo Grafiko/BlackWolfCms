@@ -3,9 +3,37 @@ class System_Utilities
 {
 #---------------------------------------------------------------------------------------------------------
 
+	public static function _stripslashes($string)
+	{
+		$string = is_array($string) ? array_map('System_Utilities::_stripslashes', $string) : stripslashes($string);
+		return $string;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public static function _addslashes($string)
+	{
+		if (is_array($string)) {
+			$string = array_map('System_Utilities::_addslashes', $string);
+		} else {
+			if (get_magic_quotes_gpc()) {
+				//return $string;
+			} else {
+				if (function_exists('addslashes')) {
+					$string = addslashes($string);
+				} else {
+					$string = mysql_real_escape_string($string);
+				}
+			}
+		}
+		return $string;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	public static function fileExists($filename)
 	{
-		echo $filename = preg_replace('/(\/\/){2,}|(\\\){1,}/','/',$filename);
+		$filename = preg_replace('/(\/\/){2,}|(\\\){1,}/','/',$filename);
 		return file_exists($filename);
 	}
 

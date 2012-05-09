@@ -115,7 +115,7 @@ class System_MetaData
 
 		$display.= "\n\t".$this->charset;
 		$display.= "\n\n\t"."<!-- FAVICON -->";
-		$display.= $favicon;
+		//$display.= $favicon;
 		$display.= "\n\n\t"."<!-- CSS FILES -->";
 		$display.= "\n\t".$this->getCss();
 		$display.= "\n\n\t"."<!-- JS FILES -->";

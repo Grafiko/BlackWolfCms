@@ -1,37 +1,30 @@
 <?php
 function smarty_function_bw_js($params, $template)
 {
+	$_tpl_config = $template->getTemplateVars('_config');
+
 	if (empty($params['file'])) {
 		trigger_error("js: nie podano parametru <b>file</b>");
 		return;
 	}
 
-	if (empty($params['type']) && empty($params['dir'])) {
-		trigger_error("js: nie podano parametru <b>type</b> i <b>dir</b>");
-		return;
-	}
-
-	if (!empty($params['type'])) {
-		switch ($params['type']) {
-			case 'admin':
-				$public_path = PUBLIC_PATH_ASSET_ADMIN_JAVASCRIPT . '/';
-				$dir = System_Url::getBaseUrl() . PUBLIC_PATH_ASSET_ADMIN_JAVASCRIPT . '/';
-				break;
-			case 'site':
-			default:
-				$public_path = PUBLIC_PATH_ASSET_SITE_JAVASCRIPT . '/';
-				$dir = System_Url::getBaseUrl() . PUBLIC_PATH_ASSET_SITE_JAVASCRIPT . '/';
-				break;
-		}
+	if (empty($params['dir'])) {
+		$path_js = $_tpl_config['public_path'] . DS . 'js';
 	} elseif (!empty($params['dir'])) {
-		$public_path = $params['dir'];
-		$dir = System_Url::getBaseUrl() . $params['dir'];
+		$dir = str_replace(array('/', '\\'), DS, $params['dir']);
+		if ($dir[0] == DS) {
+			$dir = substr($dir, 1, strlen($dir) - 1);
+		}
+		if ($dir[strlen($dir) - 1] == DS) {
+			$dir = substr($dir, 0, -1);
+		}
+		$path_js = $dir;
 	}
 
-	if (!file_exists($dir . $params['file'])) {
-		trigger_error("js: wybrany plik <b>{$dir}{$params['file']}</b> nie istnieje.");
+	if (!System_Utilities::fileExists(ROOT . DS . $path_js. DS . $params['file'])) {
+		trigger_error("js: wybrany plik <b>" . ROOT . DS . $path_js. DS . $params['file'] . "</b> nie istnieje.");
 		return;
 	}
 
-	System_MetaData::getInstance()->addJs($dir . $params['file']);
+	System_MetaData::getInstance()->addJs(DS . $path_js . DS . $params['file']);
 }

@@ -30,7 +30,7 @@ class Module_User_Admin extends Module_Admin implements Module_AdminInterface
 
 		System_MetaData::getInstance()->setTitle('Panel logowania');
 		$VS['CONTENT'] = $this->render('loginPanel.tpl', $DATA);
-//return;
+
 		$this->addToDisplay(
 			$this->render('html.tpl', $VS, $this->_path_tpl_start)
 		);

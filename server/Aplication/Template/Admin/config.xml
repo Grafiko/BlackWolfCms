@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configdata>
-	<tpl name="html.tpl">		
+	<tpl>
+		<files public_path="/asset/admin">
+			<css>reset.css</css>
+			<css>style.css</css>
+			<image>fieldsBg.png</image>
+			<image>btnOrange_small.png</image>
+		</files>
 	</tpl>
 </configdata>
