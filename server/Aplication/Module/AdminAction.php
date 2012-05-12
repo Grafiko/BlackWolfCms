@@ -15,7 +15,7 @@ abstract class Module_AdminAction
 	public function execute($action)
 	{
 		if (method_exists($this, $action)) {
-			$this->$action();
+			return $this->$action();
 		}
 	}
 

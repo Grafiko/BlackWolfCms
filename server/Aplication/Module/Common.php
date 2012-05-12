@@ -5,7 +5,7 @@ abstract class Module_Common
 	protected $_tpl_path;
 	protected $_root_module;
 	protected $_page;
-	protected $_data;
+	protected $_data_from_action;
 	protected $_translate;
 
 #---------------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ abstract class Module_Common
 		if (null !== $action) {
 			$className = get_class($this) . '_Action';
 			$execute = new $className($this);
-			$execute->execute($action);
+			$this->_data_from_action = $execute->execute($action);
 		}
 	}
 
@@ -108,6 +108,8 @@ abstract class Module_Common
 
 	protected function _initTranslate()
 	{
+		$this->_translate = System_Translate::get($this->_root_module . DS . 'i18n');
+		/*
 		$language = Zend_Registry::get('language');
 		$file = $this->_root_module . DS . 'i18n' . DS . $language . '.mo';
 		if (file_exists($file)) {
@@ -117,6 +119,7 @@ abstract class Module_Common
 					'locale'  => $language
 			));
 		}
+		*/
 	}
 
 #---------------------------------------------------------------------------------------------------------

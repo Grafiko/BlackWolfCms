@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configdata>
+	<tpl name="clock.tpl">
+		<files public_path="/asset/admin/panel/clock">
+			<js>clock.js</js>
+			<css>style.css</css>
+			<image>godziny.png</image>
+			<image>minuty.png</image>
+			<image>sekundy.png</image>
+			<image>tarcza.png</image>
+		</files>
+	</tpl>
+</configdata>

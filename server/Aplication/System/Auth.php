@@ -17,6 +17,9 @@ class System_Auth
 
 	public static function Login($redirect = null)
 	{
+		$_translate = self::_initTranslate();
+		$_result = array('isLogin', 'msg');
+
 		$f        = new Zend_Filter_StripTags();
 		$login    = $f->filter(System_Url::getPost('_email'));
 		$password = $f->filter(System_Url::getPost('_pass'));
@@ -26,9 +29,9 @@ class System_Auth
 			$authAdapter->setIdentity($login);
 			$authAdapter->setCredential($password);
 			$auth = Zend_Auth::getInstance();
-			$result = $auth->authenticate($authAdapter);
+			$authenticate = $auth->authenticate($authAdapter);
 
-			if($result->isValid()) {
+			if($authenticate->isValid()) {
 				$data = $authAdapter->getResultRowObject(array('id', 'email', 'user_role_id', 'state'));
 				switch($data->state) {
 					case System_Auth::USER_ACTIV:
@@ -43,35 +46,35 @@ class System_Auth
 						$oUserArchiveLogin->ip = $_SERVER['REMOTE_ADDR'];
 						$oUserArchiveLogin->browser = $_SERVER['HTTP_USER_AGENT'];
 						$oUserArchiveLogin->save();
-						$_json['state'] = true;
+						$_result['login'] = true;
 						break;
 
 					case System_Auth::USER_NOACTIV:
 						Zend_Auth::getInstance()->clearIdentity();
-						$_json['state'] = false;
-						$_json['msg'] = 'To konto nie zostało jeszcze aktywowane.';
+						$_result['login'] = false;
+						$_result['msg'] = $_translate->_('this_account_has_not_been_activated_yet');
 						break;
 
 					case System_Auth::USER_BLOCKED:
 						Zend_Auth::getInstance()->clearIdentity();
-						$_json['state'] = false;
-						$_json['msg'] = 'To konto zostało zablokowane.';
+						$_result['login'] = false;
+						$_result['msg'] = $_translate->_('this_account_has_been_blocked');
 						break;
 
 					case System_Auth::USER_DELETED:
 						Zend_Auth::getInstance()->clearIdentity();
-						$_json['state'] = false;
-						$_json['msg'] = 'Przykro nam, to konto zostało usunięte.';
+						$_result['login'] = false;
+						$_result['msg'] = $_translate->_('sorry_this_account_has_been_deleted');
 						break;
 				}
 			} else {
-				$_json['state'] = false;
+				$_result['login'] = false;
 			}
 		} else {
-			$_json['state'] = false;
+			$_result['login'] = false;
 		}
 
-		if(!$_json['state']) {
+		if(!$_result['login']) {
 			$oUserArchiveLogin = Module_User_Model_UserArchiveLogin_Mapper::newItem();
 			$oUserArchiveLogin->login = $login;
 			$oUserArchiveLogin->time = Zend_Registry::get('date')->get(Zend_Date::ISO_8601);
@@ -80,16 +83,18 @@ class System_Auth
 			$oUserArchiveLogin->save();
 		}
 
-		if(!$_json['state'] && empty($_json['msg'])) {
-			$_json['msg'] = 'Podany login bądź hasło jest błędne';
+		if(!$_result['login'] && empty($_result['msg'])) {
+			$_result['msg'] = $_translate->_('the_specified_username_or_password_is_incorrect');
 		}
 
-		if($_json['state']) {
-			System_Url::redirect(
-				System_Url::create(System_Url::getPageName())
-			);
-		}
-		return $_json;
+		return $_result;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	private static function _initTranslate()
+	{
+		return System_Translate::get(ROOT_APLICATION_SYSTEM . DS . 'Auth' . DS . 'i18n');
 	}
 
 #---------------------------------------------------------------------------------------------------------

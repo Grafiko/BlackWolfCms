@@ -1,8 +1,20 @@
 <?php
 class Module_User_Admin_Action extends Module_AdminAction
 {
-	public function log()
+#---------------------------------------------------------------------------------------------------------
+
+	public function login()
 	{
-		$this->module->user_id = 4;
+		$result = System_Auth::Login();
+
+		if($result['login']) {
+			System_Url::redirect(
+				System_Url_Admin::create('panel')
+			);
+		}
+
+		return $result;
 	}
+
+#---------------------------------------------------------------------------------------------------------
 }

@@ -19,17 +19,17 @@ class Module_User_Admin extends Module_Admin implements Module_AdminInterface
 
 #---------------------------------------------------------------------------------------------------------
 
-	protected function display_loginPanel($action = null)
+	protected function display_loginPanel()
 	{
-		$DATA = array(
-			'E' => $this->_data['login'],
+		$tpl_data = array(
+			'E' => $this->_data_from_action,
 			'URL' => array(
 				'POST' => System_Url_Admin::create('user', 'loginPanel', 'login')
 			)
 		);
 
 		System_MetaData::getInstance()->setTitle('Panel logowania');
-		$VS['CONTENT'] = $this->render('loginPanel.tpl', $DATA);
+		$VS['CONTENT'] = $this->render('loginPanel.tpl', $tpl_data);
 
 		$this->addToDisplay(
 			$this->render('html.tpl', $VS, $this->_path_tpl_start)

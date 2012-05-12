@@ -17,17 +17,23 @@ abstract class Module_Admin extends Module_Common
 
 	public function run($display)
 	{
-		if(preg_match( "/json/i", $display)) {
+		if (preg_match( "/json/i", $display)) {
 			$method = $display;
 		} else {
 			$method = 'display_'.$display;
 		}
 
-		if(method_exists($this, $method)) {
+		if (method_exists($this, $method)) {
 			$this->$method();
+		} elseif (method_exists($this, 'display_default')) {
+			$this->display_default();
 		} else {
-			
+			System_Url::redirect(
+				System_Url_Admin::create('error', 'modulemethodnoexist')
+			);
 		}
+
+		return;
 	}
 
 #---------------------------------------------------------------------------------------------------------

@@ -10,7 +10,6 @@
 					<fieldset>
 						<label>E-mail:</label>
 						<input class="w290" type="text" name="_email" value="" />
-						{if $E.name}<div class="error">{$E.name}</div>{/if}
 					</fieldset>
 					<fieldset>
 						<label>Hasło:</label>

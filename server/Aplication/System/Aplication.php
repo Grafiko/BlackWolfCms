@@ -20,7 +20,6 @@ class System_Aplication
 
 	protected function __construct()
 	{
-		System_Session::start();
 		$this->setSetting();
 
 		switch (System_Url::getPageName()) {
@@ -38,7 +37,10 @@ class System_Aplication
 
 	private function setSetting()
 	{
-		// LANGUAGE
+//--> Start Sesji 
+		$_session = System_Session::start();
+
+//--> Ustawienie aktualnego języka
 		Zend_Registry::set('language', 'pl_PL');
 
 		// OTHER
@@ -53,7 +55,7 @@ class System_Aplication
 			$_session->setExpirationSeconds();
 		}
 
-		// CACHE TEMPLATE SETTING
+//--> Ustawienia CACHE dla plików *.tpl
 		$frontendOptions = array('lifetime' => 1, 'automatic_serialization' => true);
 		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_TPL_CACHE);
 		$cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
