@@ -10,4 +10,5 @@
 			<image>tarcza.png</image>
 		</files>
 	</tpl>
+	<tpl name="menuTop.tpl"></tpl>
 </configdata>
