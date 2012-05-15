@@ -35,13 +35,50 @@ class System_Aplication
 
 #---------------------------------------------------------------------------------------------------------
 
+	public static function setLanguage()
+	{
+//--> Sprawdzenie czy nie nastapiła zmiana języka
+		$_language = System_Url::getGP('language', null);
+		if ($_language !== null) {
+			Zend_Registry::get('setting')->save($_language, 'language');
+		}
+
+//--> Wczytanie aktualnego ustawionego języka
+		$cache_language = Zend_Registry::get('setting')->load('language');
+
+//--> Jeżeli jeszcze żaden język nie został ustawiony ustawiamy domyślny
+		if (!$cache_language) {
+			/** TODO
+			 *  Dorobić obsługe domyślnego języka z config.ini bądź bazy
+			 */
+			$default = 'pl';
+			Zend_Registry::set('language', $default);
+		} else {
+			Zend_Registry::set('language', $cache_language);
+		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	private function setSetting()
 	{
-//--> Start Sesji 
+//--> Start Sesji
 		$_session = System_Session::start();
 
+//--> Ustawienia CACHE dla plików *.tpl
+		$frontendOptions = array('lifetime' => 1, 'automatic_serialization' => true);
+		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_TPL_CACHE);
+		$cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
+		Zend_Registry::set('cacheTemplate', $cache);
+
+//--> Ustawienia CACHE dla ustawień
+		$frontendOptions = array('lifetime' => NULL, 'automatic_serialization' => true);
+		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_CACHE);
+		$cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
+		Zend_Registry::set('setting', $cache);
+
 //--> Ustawienie aktualnego języka
-		Zend_Registry::set('language', 'pl_PL');
+		$this->setLanguage();
 
 		// OTHER
 		Zend_Registry::set('locale', 'pl_PL');
@@ -54,13 +91,6 @@ class System_Aplication
 			$_session->updateSession($id_user);
 			$_session->setExpirationSeconds();
 		}
-
-//--> Ustawienia CACHE dla plików *.tpl
-		$frontendOptions = array('lifetime' => 1, 'automatic_serialization' => true);
-		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_TPL_CACHE);
-		$cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
-		Zend_Registry::set('cacheTemplate', $cache);
-
 /*
 		// LOAD SETTING
 		$settingList = Module_Setting_Model_Setting_Mapper::getAll();
