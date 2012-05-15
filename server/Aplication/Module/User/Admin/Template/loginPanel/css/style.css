@@ -5,6 +5,7 @@
 #login>.bg {position:relative;background: url('../image/bg.png') repeat-x left 100px;}
 #login #window {width:683px; margin:0 auto;}
 #login #window>.top {height:62px;padding-top:27px;padding-left:100px;font:normal 17px/62px Impact;color:#ffb400;background: url('../image/windowTop.png') no-repeat left top;}
+#login #window>.top>div {float:right;margin:20px 70px 0 0;}
 #login #window>.bottom {padding:52px 50px 70px 50px;background: url('../image/windowBottom.png') no-repeat left bottom;}
 #login #window>.bottom fieldset>label {font-size:14px !important;font-weight:bold;color:#080808;width:60px;}
 #login #window>.bottom fieldset>.error {margin-left:70px !important;font-size:11px;line-height:24px;}

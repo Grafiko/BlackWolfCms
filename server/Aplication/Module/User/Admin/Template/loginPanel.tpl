@@ -4,7 +4,7 @@
 	<div class="logo"><img src="/asset/admin/user/loginPanel/image/logo.png" /></div>
 	<div class="bg">
 		<div id="window">
-			<div class="top">{bw_i18n txt="login_to_panel"}</div>
+			<div class="top">{bw_i18n txt="login_to_panel"} <div>{$LANGUAGE}</div></div>
 			<div class="bottom">
 				<form name="login" method="post" action="{$URL.POST}" class="standard">
 					<fieldset>
