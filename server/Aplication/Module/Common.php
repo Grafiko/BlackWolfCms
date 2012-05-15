@@ -20,6 +20,18 @@ abstract class Module_Common
 
 #---------------------------------------------------------------------------------------------------------
 
+	protected function getModule($_moduleClassName, $_action = null)
+	{
+		if (@class_exists($_moduleClassName)) {
+			$module = new $_moduleClassName($_action);
+			return $module;
+		} else {
+			die('Nie istnie klasa modułu: ' . $_moduleClassName);
+		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	protected function checkModuleAction($action)
 	{
 		if (null !== $action) {
