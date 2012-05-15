@@ -5,6 +5,7 @@ class System_MetaData
 	private $config;
 	private $css = array();
 	private $js	= array();
+	private $js_content = array('ready'=>null);
 	private $title;
 	private $meta_description;
 	private $meta_keywords;
@@ -48,11 +49,19 @@ class System_MetaData
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function addJs($name)
+	public function addJs($name, $first = false)
 	{
+		if ($first) {
+			$this->js = array_reverse($this->js);
+		}
+
 		$name = str_replace(DS, '/', $name);
 		if (!in_array($name, $this->js)) {
 		  $this->js[$name] = '<script type="text/javascript" src="'.$name.'"></script>';
+		}
+
+		if ($first) {
+			$this->js = array_reverse($this->js);
 		}
 	}
 
@@ -62,6 +71,43 @@ class System_MetaData
 	{
 		$t = array_reverse($this->js);
 		return implode("\n\t",  $t);
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function addJsContent($content, $type)
+	{
+		if ($type == 'ready') {
+			$this->js_content['ready'].= "\n\n".$content;
+		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function getJsContent()
+	{
+		if ($this->js_content['ready'] != null) {
+			$content = "$(document).ready(function() {" . "\n";
+			$content.= $this->js_content['ready'];
+			$content.= "});" . "\n";
+
+			$file_name = 'document_ready.js';
+
+			if (!file_exists(ROOT_ASSET_ADMIN_JAVASCRIPT . DS . $file_name)) {
+				System_Utilities::mkdirRecursive(ROOT_ASSET_ADMIN_JAVASCRIPT);
+			} else {
+				unlink(ROOT_ASSET_ADMIN_JAVASCRIPT . DS . $file_name);
+			}
+
+			$uchwyt = fopen(ROOT_ASSET_ADMIN_JAVASCRIPT . DS . $file_name, 'a');
+			fwrite($uchwyt, $content);
+			fclose($uchwyt);
+
+			$this->addJs(PUBLIC_PATH_ASSET_ADMIN_JAVASCRIPT . '/' . $file_name, true);
+			//return PUBLIC_PATH_ASSET_ADMIN_JAVASCRIPT . '/' . $file_name;
+ 		} else {
+ 			return false;
+ 		}
 	}
 
 #---------------------------------------------------------------------------------------------------------
@@ -96,7 +142,9 @@ class System_MetaData
 
 	public function display()
 	{
+		$js_content = $this->getJsContent();
 //		$setting = Zend_Registry::get('setting');
+
 		$config = Zend_Registry::get('config');
 /*
 		if ($setting['favicon']) {
