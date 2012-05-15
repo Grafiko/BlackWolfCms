@@ -10,5 +10,9 @@
 			<image>tarcza.png</image>
 		</files>
 	</tpl>
-	<tpl name="menuTop.tpl"></tpl>
+	<tpl name="menuTop.tpl">
+		<files public_path="/asset/admin/panel/menuTop">
+			<css>style.css</css>
+		</files>
+	</tpl>
 </configdata>
