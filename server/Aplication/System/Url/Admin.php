@@ -7,8 +7,7 @@ class System_Url_Admin extends System_Url
 	{
 		$result = array('module'=>null, 'show'=>null, 'action'=>null);
 
-		if(null != $run)
-		{
+		if (null != $run) {
 			$_tmp = explode('.', $run);
 
 //-----> Ustawienie wartości module oraz show
@@ -16,7 +15,7 @@ class System_Url_Admin extends System_Url
 			$result['module'] = isset($_ms[0])?$_ms[0]:null;
 			$result['show'] = isset($_ms[1])?$_ms[1]:null;
 
-			switch(count($_tmp)) {
+			switch (count($_tmp)) {
 				case 2:
 					$result['action'] = $_tmp[1];
 					break;

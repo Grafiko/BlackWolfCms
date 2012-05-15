@@ -265,7 +265,7 @@ class System_Url
 	public static function create()
 	{
 		$vars = func_get_args();
-		Zend_Debug::dump(func_get_args());
+		//Zend_Debug::dump(func_get_args());
 		//$page = null, $module = null, $action = null, $params=null, $from=false
 		$instance = self::getInstance();
 

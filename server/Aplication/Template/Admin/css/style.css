@@ -21,7 +21,7 @@ img.border {border:1px solid #000000;}
 #container {width:100%;}
 #container>#top {overflow:hidden; height:180px; padding:15px 30px; background-color:#000000;}
 #container>#top>.left {float:left; width:270px;}
-#container>#top>.middle {float:left; width:166px;}
+#container>#top>.middle {float:left; width:166px;margin:0 14px 0 0;}
 #container>#top>.right {overflow:hidden;}
 #container>#tab {height:34px;overflow:hidden;}
 #container>#middle {margin:12px 0 12px 0;}
@@ -60,18 +60,6 @@ img.border {border:1px solid #000000;}
 
 .btnPlay {width:78px;height:78px;background: url('../image/btnPlay.png') no-repeat left top;cursor:pointer;}
 .btnPlay:hover {background: url('../image/btnPlay.png') no-repeat -78px top;}
-
-
-/*********************************************************************************************************
-*** Menu - Top
-*********************************************************************************************************/
-ul.menuTop {overflow:hidden;height:100%;margin-left:13px;}
-ul.menuTop>li {color:#ffffff;line-height:16px; padding:5px 10px 5px 2px; border-bottom:1px solid #242424;}
-ul.menuTop.columns2>li.aLeft { float:left; width:70%; padding: 5px 0; }
-ul.menuTop.columns2>li.aRight { float:left; width:30%; padding: 5px 0; }
-ul.menuTop>li.title {border-bottom:0 none; color:#ffa313; font-size:17px; font-family: Impact;}
-ul.menuTop>li>a {color:#ffffff; margin:0 15px 0 2px;}
-ul.menuTop>li>a:hover {color:#D1CDCD;}
 
 
 /*********************************************************************************************************
