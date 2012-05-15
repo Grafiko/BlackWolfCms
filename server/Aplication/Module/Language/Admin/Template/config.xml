@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configdata>
+	<tpl name="selectLanguage.tpl">
+		<files public_path="/asset/admin/language/selectLanguage">
+			<css>style.css</css>
+			<image>flagBg.png</image>
+			<image>nameBg.png</image>
+			<image>arrowBg.png</image>
+			<image>pl.png</image>
+			<image>en.png</image>
+		</files>
+	</tpl>
+</configdata>
