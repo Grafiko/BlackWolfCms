@@ -35,20 +35,4 @@ class Module_Language_Admin extends Module_Admin implements Module_AdminInterfac
 	}
 
 #---------------------------------------------------------------------------------------------------------
-
-	protected function _menuTop()
-	{
-		$oMenuRowset = Module_Panel_Model_Menu_Mapper::getAll();
-		foreach($oMenuRowset as $oMenuRow) {
-			$oMenuRow->getItems();
-		}
-		$tpl_data = array(
-			'oMenuRowset' => $oMenuRowset
-		);
-		$result = $this->render('menuTop.tpl', $tpl_data);
-
-		return $result;
-	}
-
-#---------------------------------------------------------------------------------------------------------
 }

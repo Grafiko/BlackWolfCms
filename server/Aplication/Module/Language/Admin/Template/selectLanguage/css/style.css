@@ -2,7 +2,8 @@
 *** Language - selectLanguage
 *********************************************************************************************************/
 .adminSelectLanguage {min-width:100px;}
-.adminSelectLanguage>dl {width:auto;height:24px;font:bold 12px/16px Tahoma;}
+.adminSelectLanguage>.name {float:left;margin:0 8px 0 0;font:bold 12px/24px Tahoma;color:#FFA313;}
+.adminSelectLanguage>dl {float:left;width:auto;font:bold 12px/24px Tahoma;}
 .adminSelectLanguage>dl>dt {overflow:hidden;width:auto;height:24px;margin:0;padding:0;border:1px solid #000000;}
 .adminSelectLanguage>dl>dt>a {display:block;height:24px;color:#ffffff;}
 .adminSelectLanguage>dl>dt>a>span.flag {display:block;float:left;width:32px;height:24px;border-right:1px solid #000000;text-align:center;background:transparent url('../image/flagBg.png') no-repeat left top;}
@@ -16,21 +17,3 @@
 .adminSelectLanguage>dl>dd>ul>li>a>span.flag {display:block;float:left;width:32px;height:24px;padding:0 1px 0 0;border-right:1px solid #494b4b;text-align:center;}
 .adminSelectLanguage>dl>dd>ul>li>a>span.name {display:block;overflow:hidden;height:24px;padding:0 8px;line-height:24px;}
 .adminSelectLanguage>dl>dd>ul>li>a:hover {color:#ffffff;background-color:#111212;}
-
-
-.dropdown2 dd,
-.dropdown2 dt,
-.dropdown2 ul { margin:0px; padding:0px; }
-.dropdown2 dd { position:relative; }
-.dropdown2 a,
-.dropdown2 a:visited {color:#ffffff;text-decoration:none;outline:none;}
-.dropdown2 a:hover {color:#5d4617;}
-.dropdown2 dt a:hover {color:#5d4617;border:1px solid #d0c9af;}
-.dropdown2 dt a {background:#e4dfcb url(arrow.png) no-repeat scroll right center;display:block;padding-right:20px;border:1px solid #d4ca9a;width:150px;}
-.dropdown2 dt a span {cursor:pointer;display:block;padding:5px;}
-.dropdown2 dd ul {position:absolute;top:2px;left:0px;width:auto;min-width:170px;padding:5px 0px;background:#e4dfcb none repeat scroll 0 0;border:1px solid #d4ca9a;color:#C5C0B0;display:none;list-style:none;}
-.dropdown2 span.value {display:none;}
-.dropdown2 dd ul li a {padding:5px;display:block;}
-.dropdown2 dd ul li a:hover {background-color:#d0c9af;}
-.dropdown2 img.flag {border:none;vertical-align:middle;margin-left:10px;}
-.flagvisibility {display:none;}

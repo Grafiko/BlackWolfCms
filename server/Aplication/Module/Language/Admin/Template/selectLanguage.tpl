@@ -1,6 +1,7 @@
 {bw_css file="style.css"}
 
 <div class="adminSelectLanguage">
+	<span class="name">{bw_i18n txt="language"}:</span>
 	<dl>
 		<dt>
 			<a href="#">
