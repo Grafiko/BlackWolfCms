@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configdata>
+	<tpl name="menuLeft.tpl">
+		<files public_path="/asset/admin/plugins/menuLeft">
+			<css>style.css</css>
+			<image>titleBg.png</image>
+			<image>itemSelectBg.png</image>
+		</files>
+	</tpl>
+</configdata>
