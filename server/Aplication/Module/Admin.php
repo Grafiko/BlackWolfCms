@@ -8,7 +8,7 @@ abstract class Module_Admin extends Module_Abstract
 
 	public function __construct($action = null)
 	{
-		parent::__construct();
+		parent::__construct($action);
 		$this->_path_tpl_start = ROOT_APLICATION_TEMPLATE_ADMIN;
 		$this->_url_asset = System_Url::getBaseUrl() . PUBLIC_PATH_ASSET_ADMIN;
 	}

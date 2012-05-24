@@ -4,14 +4,7 @@ class Module_Log_Admin extends Module_Admin implements Module_AdminInterface
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function __construct($action = null)
-	{
-//--> Ustawienie początkowych ustawień modułu
-		parent::__construct();
-
-//--> Sprawdzenie czy istnieje akcja do wykonania
-		$this->checkModuleAction($action);
-	}
+	public function __init() {}
 
 #---------------------------------------------------------------------------------------------------------
 

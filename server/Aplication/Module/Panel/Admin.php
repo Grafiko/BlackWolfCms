@@ -4,17 +4,7 @@ class Module_Panel_Admin extends Module_Admin implements Module_AdminInterface
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function __construct($action = null)
-	{
-//--> Ustawienie początkowych ustawień modułu
-		parent::__construct();
-
-//--> Akcje wewnętrzne modułu
-		$this->user_id = System_Url::getGet('user');
-
-//--> Sprawdzenie czy istnieje akcja do wykonania
-		$this->checkModuleAction($action);
-	}
+	public function __init() {}
 
 #---------------------------------------------------------------------------------------------------------
 

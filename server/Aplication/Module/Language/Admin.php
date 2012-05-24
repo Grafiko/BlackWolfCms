@@ -4,14 +4,7 @@ class Module_Language_Admin extends Module_Admin implements Module_AdminInterfac
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function __construct($action = null)
-	{
-//--> Ustawienie początkowych ustawień modułu
-		parent::__construct();
-
-//--> Sprawdzenie czy istnieje akcja do wykonania
-		$this->checkModuleAction($action);
-	}
+	public function __init() {}
 
 #---------------------------------------------------------------------------------------------------------
 

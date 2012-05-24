@@ -59,8 +59,8 @@ class System_Email
 				->setBodyHtml($body_html)
 				->send($this->transport)
 			;
-			Zend_Debug::dump($r);
-			exit;
+			//Zend_Debug::dump($r);
+			//exit;
 			return true;
 		} catch (Exception $e) {
 			return false;

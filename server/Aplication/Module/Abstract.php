@@ -8,9 +8,17 @@ abstract class Module_Abstract extends System_Abstract
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function __construct()
+	public function __construct($action = null)
 	{
 		parent::__construct();
+
+//--> Inicjowanie modułu
+		$this->__init();
+
+//--> Sprawdzenie czy istnieje akcja do wykonania
+		$this->checkModuleAction($action);
+
+//--> Ustawienie zmiennych
 		$this->_page = System_Url::getGP('page', 1);
 		$this->_hash = System_Url::getGP('hash');
 	}
