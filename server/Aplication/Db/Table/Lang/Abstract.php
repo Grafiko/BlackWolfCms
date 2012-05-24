@@ -7,7 +7,8 @@ abstract class Db_Table_Lang_Abstract extends Db_Table_Abstract
 
 	public function __construct($config = array(), $definition = null)
 	{
-		$this->_language = Zend_Registry::get('language');
+		$user_setting = Zend_Registry::get('user_setting');
+		$this->_language = $user_setting->language;
 		parent::__construct($config, $definition);
 	}
 

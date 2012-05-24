@@ -1,6 +1,28 @@
 <?php
 abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 {
+	protected $_mData = array();
+	protected $_isValid = false;
+	protected $_errors = array();
+	protected $_stored = false;
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function __construct(array $config = array())
+	{
+		if (isset($config['stored']) && $config['stored'] === true) {
+			$this->_stored = true;
+		}
+		parent::__construct($config);
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function isStored()
+	{
+		return $this->_stored;
+	}
+
 #---------------------------------------------------------------------------------------------------------
 
 	public function __get($columnName)
@@ -18,6 +40,10 @@ abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 			$value = System_Utilities::_stripslashes($value);
 		}
 
+		if (System_Utilities::is_serialized($value)) {
+			$value = unserialize($value);
+		}
+
 		return $value;
 	}
 
@@ -25,6 +51,10 @@ abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 
 	public function __set($columnName, $value)
 	{
+		if (is_array($value)) {
+			$value = serialize($value);
+		}
+
 		if ($value !== null) {
 			$value = System_Utilities::_addslashes($value);
 		}
@@ -33,6 +63,38 @@ abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 			parent::__set($columnName, $value);
 		} else {
         $this->_mData[$columnName] = $value;
+		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function validData()
+	{
+		if (sizeof($this->_errors) > 0) {
+			$this->_isValid = false;
+		} else {
+			$this->_isValid = true;
+		}
+		return $this->_isValid;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function getValidErrors()
+	{
+		return $this->_errors;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function save()
+	{
+		$this->validData();
+
+		if ($this->_isValid) {
+			return parent::save();
+		} else {
+				return false;
 		}
 	}
 

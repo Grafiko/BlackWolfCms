@@ -7,6 +7,8 @@ abstract class Db_Mapper_Abstract
 
 	public static function getDbTableClassName()
 	{
+		//echo $className = get_class(static);
+		//exit;
 		$_tmp = explode('_', static::$_dbModuleModelName);
 		for($i=0,$ln=count($_tmp); $i<$ln; $i++) {
 			$_tmp[$i] = ucfirst($_tmp[$i]);
