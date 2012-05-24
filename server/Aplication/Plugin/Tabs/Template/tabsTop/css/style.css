@@ -1,0 +1,16 @@
+/*********************************************************************************************************
+*** Tabs - Top
+*********************************************************************************************************/
+#tabsTop .ui-widget-header {background:none;border:0 none;font-family: Verdana;}
+#tabsTop.ui-widget-content {margin:0;padding:0;background:none;border:0 none;}
+#tabsTop>ul {height:29px;line-height:29px;margin:0 0 0 5px !important;padding: 5px 0 0 0 !important;}
+#tabsTop>ul>li {margin:0 11px 0 0;border:0 none;padding:0 0 0 11px;top:0;font-size:13px;}
+#tabsTop>ul>li>a {padding:0 22px 0 11px;margin:0;color:#ffffff;}
+#tabsTop>ul>li.ui-state-default {background:url('../image/itemLeft.png') no-repeat left -29px;top:-1px;}
+#tabsTop>ul>li.ui-state-hover {}
+#tabsTop>ul>li.ui-state-active {background:url('../image/itemLeft.png') no-repeat left 0px;top:0;}
+#tabsTop>ul>li.ui-state-default>a {background:url('../image/itemRight.png') no-repeat right -29px;}
+#tabsTop>ul>li.ui-state-active>a {color:#000000;background:url('../image/itemRight.png') no-repeat right top;}
+#tabsTop .ui-tabs-panel {margin-top:12px;padding:0;}
+#tabsTop .section2 {color:#626060;font:bold 14px/20px Tahoma;text-transform:uppercase;}
+#tabsTop .section2>span {color:#626060;font:bold 12px/20px Tahoma;text-transform:uppercase;}

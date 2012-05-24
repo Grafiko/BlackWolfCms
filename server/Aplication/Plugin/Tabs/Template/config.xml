@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configdata>
+	<tpl name="tabsTop.tpl">
+		<files public_path="/asset/admin/plugins/tabsTop">
+			<css>style.css</css>
+			<image>bg.png</image>
+			<image>itemLeft.png</image>
+			<image>itemRight.png</image>
+		</files>
+	</tpl>
+</configdata>
