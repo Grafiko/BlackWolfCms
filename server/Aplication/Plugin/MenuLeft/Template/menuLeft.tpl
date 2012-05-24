@@ -6,7 +6,7 @@
 	{if !$oMenuLeftItem->isHidden()}
 	<li>
 		<a 
-			href="{$oMenuLeftItem->getHref()}"
+			href="{if $oMenuLeftItem->getHref()}{$oMenuLeftItem->getHref()}{else}#{/if}"
 			{if $oMenuLeftItem->isActiv()}class="activ"{/if}
 			{if $oMenuLeftItem->getOnClick()}onClick="{$oMenuLeftItem->getOnClick()}"{/if}
 		>{$oMenuLeftItem->getName()}</a>
