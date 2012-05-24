@@ -2,6 +2,7 @@
 class System_Aplication
 {
 	protected static $_instance;
+	protected $_user_setting;
 	private $_tpl;
 	private $config;
 
@@ -35,26 +36,22 @@ class System_Aplication
 
 #---------------------------------------------------------------------------------------------------------
 
-	public static function setLanguage()
+	public function setLanguage()
 	{
-//--> Sprawdzenie czy nie nastapiła zmiana języka
+//--> Sprawdzenie czy nastapiła zmiana języka
 		$_language = System_Url::getGP('language', null);
 		if ($_language !== null) {
-			Zend_Registry::get('setting')->save($_language, 'language');
+			$this->_user_setting->language = $_language;
 		}
 
-//--> Wczytanie aktualnego ustawionego języka
-		$cache_language = Zend_Registry::get('setting')->load('language');
+//--> Sprawdzenie czy został ustawiony domyślny język
+		if (null === $this->_user_setting->language_default) {
+			$this->_user_setting->language_default = Module_Language_Model_Language_Mapper::getDefaultAdminLanguage()->code;
+		}
 
-//--> Jeżeli jeszcze żaden język nie został ustawiony ustawiamy domyślny
-		if (!$cache_language) {
-			/** TODO
-			 *  Dorobić obsługe domyślnego języka z config.ini bądź bazy
-			 */
-			$default = 'pl';
-			Zend_Registry::set('language', $default);
-		} else {
-			Zend_Registry::set('language', $cache_language);
+//--> Sprawdzenie czy został ustawiony aktualny język
+		if (null === $this->_user_setting->language) {
+			$this->_user_setting->language = $this->_user_setting->language_default;
 		}
 	}
 
@@ -64,6 +61,12 @@ class System_Aplication
 	{
 //--> Start Sesji
 		$_session = System_Session::start();
+		$this->_user_setting = new Zend_Session_Namespace('setting');
+		if (System_Auth::IsLogin()) {
+			$id_user	= Zend_Auth::getInstance()->getIdentity()->id;
+			$_session->updateSession($id_user);
+			$_session->setExpirationSeconds();
+		}
 
 //--> Ustawienia CACHE dla plików *.tpl
 		$frontendOptions = array('lifetime' => 1, 'automatic_serialization' => true);
@@ -72,41 +75,29 @@ class System_Aplication
 		Zend_Registry::set('cacheTemplate', $cache);
 
 //--> Ustawienia CACHE dla ustawień
-		$frontendOptions = array('lifetime' => NULL, 'automatic_serialization' => true);
-		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_CACHE);
-		$cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
-		Zend_Registry::set('setting', $cache);
+		$frontendOptions = array('lifetime' => 1, 'automatic_serialization' => true);
+		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_CACHE_SYSTEM);
+		$cache_system_setting = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
 
 //--> Ustawienie aktualnego języka
 		$this->setLanguage();
 
-		// OTHER
+//--> Wczytanie ustawień z bazy danych
+		$db_setting = $cache_system_setting->load('db_setting');
+		if (!$db_setting) {
+			$oSettingList = Module_System_Model_Setting_Mapper::getAll();
+			foreach ($oSettingList as $var) {
+				$db_setting[$var->var] = $var->value;
+			}
+			$cache_system_setting->save($db_setting, 'db_setting');
+		}
+
+//--> Ustawienia dla Zend_Registry
 		Zend_Registry::set('locale', 'pl_PL');
 		Zend_Registry::set('date', new Zend_Date(null, null, Zend_Registry::get('locale')));
 		Zend_Registry::set('identity', Zend_Auth::getInstance()->getIdentity());
-
-		// SESSION
-		if (System_Auth::IsLogin()) {
-			$id_user	= Zend_Registry::get('identity')->id;
-			$_session->updateSession($id_user);
-			$_session->setExpirationSeconds();
-		}
-/*
-		// LOAD SETTING
-		$settingList = Module_Setting_Model_Setting_Mapper::getAll();
-		$setting = array();
-		foreach($settingList as $var) {
-			$setting[$var->var] = $var->value;
-		}
-		Zend_Registry::set('setting', $setting);
-
-		// CACHE
-		$frontendOptions = array('lifetime' => 10000, 'automatic_serialization' => true);
-		$backendOptions = array('cache_dir' => DB_CACHE);
-		$cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
-		//$cache->clean();
-		Zend_Registry::set('cache', $cache);
- */
+		Zend_Registry::set('user_setting', $this->_user_setting);
+		Zend_Registry::set('system_setting', $db_setting);
 	}
 
 #---------------------------------------------------------------------------------------------------------
@@ -142,7 +133,7 @@ class System_Aplication
 
 		$_className = 'Module_'.ucfirst(System_Url::getRunModule()).'_Admin';
 
-		if (@class_exists($_className)) {
+		if (class_exists($_className)) {
 			$result = new $_className($_action);
 			$result->run($_show);
 			$toDisplay = $result->getModuleResult();

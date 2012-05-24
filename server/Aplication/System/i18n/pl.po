@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Module_User_Admin\n"
+"Project-Id-Version: System\n"
 "POT-Creation-Date: 2012-05-09 15:04+0100\n"
-"PO-Revision-Date: 2012-05-19 14:06+0100\n"
+"PO-Revision-Date: 2012-05-21 12:42+0100\n"
 "Last-Translator: Tomasz Juśkiewicz <tomasz.juskiewicz@grafiko.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,18 +14,12 @@ msgstr ""
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-msgid "login_to_panel"
-msgstr "Zaloguj do panelu"
+msgid "save_changes"
+msgstr "zapisz zmiany"
 
-msgid "log_in"
-msgstr "Zaloguj"
+msgid "test_connection"
+msgstr "testuj połączenie"
 
-msgid "login_panel_help_text"
-msgstr "W wypadku zaginięcia hasła prosimy o kontakt bezpośredni z operatorami"
-
-msgid "email"
-msgstr "E-mail"
-
-msgid "password"
-msgstr "Hasło"
+msgid "auxiliary_menu"
+msgstr "Menu pomocnicze"
 

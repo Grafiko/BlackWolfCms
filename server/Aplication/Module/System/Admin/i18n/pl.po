@@ -1,0 +1,100 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Module_System_Admin\n"
+"POT-Creation-Date: 2012-05-09 15:04+0100\n"
+"PO-Revision-Date: 2012-05-22 12:30+0100\n"
+"Last-Translator: Tomasz Juśkiewicz <tomasz.juskiewicz@grafiko.pl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid "mailbox"
+msgstr "Skrzynka pocztowa"
+
+msgid "favicon"
+msgstr "Favicon"
+
+msgid "cache_site"
+msgstr "Cache strony"
+
+msgid "setting"
+msgstr "Ustawienia"
+
+msgid "the_settings_of_the_access_to_the_smtp_server"
+msgstr "Ustawienia danych dostępowych do serwera smtp"
+
+msgid "smtp_server_address"
+msgstr "Adres serwera smtp"
+
+msgid "email_address"
+msgstr "Adres e-mail"
+
+msgid "password"
+msgstr "Hasło"
+
+msgid "other_settings_for_the_shipment"
+msgstr "Pozostałe ustawienia dotyczące wysyłki"
+
+msgid "the_default_email_address_from"
+msgstr "Domyślny adres email od"
+
+msgid "the_name_of_the_default_address"
+msgstr "Nazwa domyślnego adresu"
+
+msgid "messages_send_per_minute"
+msgstr "Wiadomości na minutę"
+
+msgid "smtp_server_was_successful_%s"
+msgstr "Połączenie z serwerem smtp zostało nawiązane pomyślnie.<br />Na adres %s została wysłana testowa wiadomość."
+
+msgid "could_not_connect_to_smtp_server"
+msgstr "Nie udało się nawiązać połączenia z serwerem smtp, prawdopodobnie podano złe dane."
+
+msgid "test_smtp_email_title"
+msgstr "Testowanie połączenia smtp"
+
+msgid "test_smtp_email_text"
+msgstr "Przykładowa wiadomość przy testowaniu połączenia smtp."
+
+msgid "you_have_not_specified_smtp_server_name"
+msgstr "Nie podano nazwy serwera smtp."
+
+msgid "you_have_not_specified_an_email_address"
+msgstr "Nie podano adresu email."
+
+msgid "no_password_is_supplied"
+msgstr "Nie podano hasła."
+
+msgid "there_are_defined_options_for_number_of_emails_sent_by_the_server_per_minute"
+msgstr "Nie zdefiniowano możliwości dotyczących ilości wysyłanych emaili przez serwer na minutę."
+
+msgid "the_value_must_be_a_number"
+msgstr "Wartość musi być liczbą."
+
+msgid "the_value_must_be_greater_than_0"
+msgstr "Wartość musi być większa od 0."
+
+msgid "do_not_see_your_email_from"
+msgstr "Nie podano adresu e-mail od."
+
+msgid "the_email_address_is_incorrect"
+msgstr "Podany adres e-mail jest błędny."
+
+msgid "you_have_not_specified_a_name_for_the_default_address_from"
+msgstr "Nie podano nazwy dla domyślnego adresu od."
+
+msgid "size_of_each_directory_containing_the_cache_page"
+msgstr "Aktualny rozmiar poszczególnych katalogów zawierających cache strony"
+
+msgid "cache_site_was_successfully_cleaned"
+msgstr "Cache strony został pomyślnie wyczyszczony."
+
+msgid "new_settings_for_email_have_been_saved"
+msgstr "Nowe ustawienia dla poczty zostały zapisane."
+

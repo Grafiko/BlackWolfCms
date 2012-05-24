@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configdata>
+	<tpl name="logPanel.tpl">
+		<files public_path="/asset/admin/log/logPanel">
+			<css>style.css</css>
+			<image>spec.png</image>
+			<image>titleBg.png</image>
+		</files>
+	</tpl>
+</configdata>

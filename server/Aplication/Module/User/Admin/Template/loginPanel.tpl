@@ -8,13 +8,13 @@
 			<div class="bottom">
 				<form name="login" method="post" action="{$URL.POST}" class="standard">
 					<fieldset>
-						<label>E-mail:</label>
+						<label>{bw_i18n txt="email"}:</label>
 						<input class="w290" type="text" name="_email" value="" />
 					</fieldset>
 					<fieldset>
-						<label>Hasło:</label>
+						<label>{bw_i18n txt="password"}:</label>
 						<input class="w290" type="password" name="_pass" value="" />
-						{if $E.msg}<div class="error">{$E.msg}</div>{/if}
+						{if $E}<div class="error">{$E}</div>{/if}
 					</fieldset>
 
 					<div class="buttons" style="padding-left:277px;">

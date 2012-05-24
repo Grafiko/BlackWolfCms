@@ -19,6 +19,10 @@ class Module_User_Admin extends Module_Admin implements Module_AdminInterface
 
 #---------------------------------------------------------------------------------------------------------
 
+	public function display_default() {}
+
+#---------------------------------------------------------------------------------------------------------
+
 	protected function display_loginPanel()
 	{
 		System_MetaData::getInstance()->setTitle('Panel logowania');
@@ -30,7 +34,7 @@ class Module_User_Admin extends Module_Admin implements Module_AdminInterface
 //->> Ustawienie danych wejściowych dla szablonu *.tpl
 		$tpl_data = array(
 			'LANGUAGE' => $view_language,
-			'E' => $this->_data_from_action,
+			'E' => $this->_action_message,
 			'URL' => array(
 				'POST' => System_Url_Admin::create('user', 'loginPanel', 'login')
 			)

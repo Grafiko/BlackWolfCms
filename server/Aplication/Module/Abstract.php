@@ -1,28 +1,54 @@
 <?php
-abstract class Module_Common
+abstract class Module_Abstract extends System_Abstract
 {
 	protected $_toDisplay;
-	protected $_tpl_path;
-	protected $_root_module;
 	protected $_page;
-	protected $_data_from_action;
-	protected $_translate;
+	protected $_hash;
+	private $_data;
 
 #---------------------------------------------------------------------------------------------------------
 
 	public function __construct()
 	{
+		parent::__construct();
 		$this->_page = System_Url::getGP('page', 1);
-		$this->setModulePath();
-		$this->setTplPath();
-		$this->_initTranslate();
+		$this->_hash = System_Url::getGP('hash');
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function __get($name)
+	{
+		if (isset($this->$name)) {
+			return $this->$name;
+		} else {
+			return null;
+		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function getData($name)
+	{
+		if (isset($this->_data[$name])) {
+			return $this->_data[$name];
+		} else {
+			return null;
+		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function setData($name, $value)
+	{
+		$this->_data[$name] = $value;
 	}
 
 #---------------------------------------------------------------------------------------------------------
 
 	protected function getModule($_moduleClassName, $_action = null)
 	{
-		if (@class_exists($_moduleClassName)) {
+		if (class_exists($_moduleClassName)) {
 			$module = new $_moduleClassName($_action);
 			return $module;
 		} else {
@@ -37,7 +63,13 @@ abstract class Module_Common
 		if (null !== $action) {
 			$className = get_class($this) . '_Action';
 			$execute = new $className($this);
-			$this->_data_from_action = $execute->execute($action);
+			$result = $execute->execute($action);
+
+			if ($result !== null and is_array($result)) {
+				foreach ($result as $name => $value) {
+					$this->setData($name, $value);
+				}
+			}
 		}
 	}
 
@@ -53,94 +85,6 @@ abstract class Module_Common
 	public function getModuleResult()
 	{
 		return $this->_toDisplay;
-	}
-
-#---------------------------------------------------------------------------------------------------------
-
-	protected function setModulePath()
-	{
-		$tpl_path = ROOT_APLICATION_MODULE;
-		$className = get_class($this);
-		$_tmp = explode('_', $className);
-		unset($_tmp[0]);
-		foreach ($_tmp as $key=>$value) {
-			$tpl_path.= DS . $value;
-		}
-
-		$this->_root_module = $tpl_path;
-	}
-
-#---------------------------------------------------------------------------------------------------------
-
-	protected function setTplPath()
-	{
-		$tpl_path = ROOT_APLICATION_MODULE;
-		$className = get_class($this);
-		$_tmp = explode('_', $className);
-		unset($_tmp[0]);
-		foreach ($_tmp as $key=>$value) {
-			$tpl_path.= DS . $value;
-		}
-
-		$this->_tpl_path = $tpl_path . DS . 'Template';
-	}
-
-#---------------------------------------------------------------------------------------------------------
-
-	protected function render($tpl_name, $values = null, $tpl_path = null)
-	{
-		if ($tpl_path) {
-			$tpl = $tpl_path . DS . $tpl_name;
-		} else {
-			$tpl = $this->_tpl_path . DS . $tpl_name;
-		}
-
-		if (file_exists($tpl)) {
-			$config = System_Tpl::checkConfig($tpl);
-
-			$output = new smarty();
-			$output->assign('_config', $config);
-			$output->assign('_translate', $this->_translate);
-
-			if (is_array($values)) {
-				foreach ($values as $name => $value) {
-					$output->assign($name, $value);
-				}
-			}
-
-			$result = $output->fetch($tpl);
-		} else {
-			$result = "Szablon .tpl '{$tpl_name}' nie istnieje.";
-		}
-
-		return $result;
-	}
-
-#---------------------------------------------------------------------------------------------------------
-
-	protected function _initTranslate()
-	{
-		$this->_translate = System_Translate::get($this->_root_module . DS . 'i18n');
-		/*
-		$language = Zend_Registry::get('language');
-		$file = $this->_root_module . DS . 'i18n' . DS . $language . '.mo';
-		if (file_exists($file)) {
-			$this->_translate = new Zend_Translate(array(
-					'adapter' => 'gettext',
-					'content' => $file,
-					'locale'  => $language
-			));
-		}
-		*/
-	}
-
-#---------------------------------------------------------------------------------------------------------
-
-	protected function sendJson($json)
-	{
-		header('Content-Type: application/json');
-		echo Zend_Json::encode($json, Zend_Json::TYPE_OBJECT);
-		exit;
 	}
 
 #---------------------------------------------------------------------------------------------------------

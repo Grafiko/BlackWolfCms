@@ -1,13 +1,21 @@
 <?php
-interface Module_AdminInterface
+class System_Logs_Model_Item_Mapper
 {
 #---------------------------------------------------------------------------------------------------------
 
-	public function __construct($action);
+	public static function newItem()
+	{
+		$dbTable = new System_Logs_Model_Item_DbTable();
+		return $dbTable->createRow();
+	}
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function display_default();
+	public static function getItemsFromAdminPanel()
+	{
+		$dbTable = new System_Logs_Model_Item_DbTable();
+		return $dbTable->createRow();
+	}
 
 #---------------------------------------------------------------------------------------------------------
 }

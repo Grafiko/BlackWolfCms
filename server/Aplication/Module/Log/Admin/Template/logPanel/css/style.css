@@ -1,0 +1,19 @@
+/*********************************************************************************************************
+*** System logs Panel
+*********************************************************************************************************/
+#system_logs {overflow:hidden;}
+#system_logs>.box {float:left;width:100%;padding:0 12px;}
+#system_logs>.box.off {display:none;}
+#system_logs>.box>.left {overflow:hidden;margin:10px 0 8px;}
+#system_logs>.box>.left>.name {margin:0 0 0px;padding:0 10px;font:normal 15px/29px Tahoma;color:#ffffff;background: transparent url('../image/titleBg.png') repeat-x left top;}
+#system_logs>.box>.left>ul {border:1px solid #000000;}
+#system_logs>.box>.left>ul>li {border-bottom:1px dotted #000000;font-size:11px;line-height:13px;background-color:#e3e3e3;}
+#system_logs>.box>.left>ul>li>span {display:block;padding:5px 10px;}
+#system_logs>.box>.left>ul>li>span.time {float:left;width:150px;text-align:center;}
+#system_logs>.box>.left>ul>li>span.info {overflow:hidden;border-left:1px dotted #000000;}
+#system_logs>.box>.left>ul>li.n2 {background-color:#c2c2c2;}
+#system_logs>.box>.left>ul>li.last {border:0 none;}
+#system_logs>.box>.right {float:right;width:40px;}
+
+#system_logs>.btnLog {height:7px;background-color:#000000;}
+#system_logs>.btnLog>a {display:block;width:27px;height:7px;margin:0 auto;background: transparent url('../image/spec.png') no-repeat right top;}

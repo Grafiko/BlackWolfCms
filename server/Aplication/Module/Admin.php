@@ -1,5 +1,5 @@
 <?php
-abstract class Module_Admin extends Module_Common
+abstract class Module_Admin extends Module_Abstract
 {
 	protected $_path_tpl_start;
 	protected $_url_asset;

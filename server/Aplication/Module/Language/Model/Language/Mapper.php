@@ -12,4 +12,14 @@ class Module_Language_Model_Language_Mapper extends Db_Mapper_Abstract
 	}
 
 #---------------------------------------------------------------------------------------------------------
+
+	public static function getDefaultAdminLanguage()
+	{
+		$dbTable = new Module_Language_Model_Language_DbTable();
+		$select = $dbTable->select()->where('is_admin = ?', 1)->where('is_default = ?', 1);
+		$result = $dbTable->fetchRow($select);
+		return $result;
+	}
+
+#---------------------------------------------------------------------------------------------------------
 }

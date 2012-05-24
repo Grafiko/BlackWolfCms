@@ -286,6 +286,17 @@ class System_Url
 
 #---------------------------------------------------------------------------------------------------------
 
+	public static function getCookie($key = null, $default = null)
+	{
+		if (null === $key) {
+			return $_COOKIE;
+		}
+
+		return (isset($_COOKIE[$key])) ? $_COOKIE[$key] : $default;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	public static function getReferer()
 	{
 		$url = $_SERVER['REQUEST_URI'];

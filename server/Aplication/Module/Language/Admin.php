@@ -15,9 +15,15 @@ class Module_Language_Admin extends Module_Admin implements Module_AdminInterfac
 
 #---------------------------------------------------------------------------------------------------------
 
+	public function display_default() {}
+
+#---------------------------------------------------------------------------------------------------------
+
 	public function view_listOfAvailableLanguages()
 	{
-		$current_language = Zend_Registry::get('language');
+		$user_setting = Zend_Registry::get('user_setting');
+		$current_language = $user_setting->language;
+
 		$oLanguageRowset = Module_Language_Model_Language_Mapper::getAdminAvailableLanguages();
 		foreach ($oLanguageRowset as $oLanguage) {
 			if ($oLanguage->code == $current_language) {

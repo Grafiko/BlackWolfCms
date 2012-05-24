@@ -1,45 +1,44 @@
 <?php
-abstract class Module_AdminAction
+class System_Logs
 {
-	protected $module;
-	public $_translate;
-	private $_data = null;
+	const ERROR = 'error';
+	const WARNING = 'warning';
+	const INFO = 'info';
+	const CREATE = 'create';
+	const UPDATE = 'update';
+	const DELETE = 'delete';
+
+	protected static $_instance;
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function __construct($module)
+	public function __construct()
 	{
-		$this->module = $module;
-		$this->_translate = $this->module->getTranslate();
+		
 	}
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function execute($action)
+	public static function getInstance()
 	{
-		if (method_exists($this, $action)) {
-			$this->$action();
+		if(null === self::$_instance) {
+			self::$_instance = new self();
 		}
-
-		return $this->_data;
+		return self::$_instance;
 	}
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function getData($name)
+	public static function newItem()
 	{
-		if (isset($this->_data[$name])) {
-			return $this->_data[$name];
-		} else {
-			return null;
-		}
+		return System_Logs_Model_Item_Mapper::newItem();
 	}
 
 #---------------------------------------------------------------------------------------------------------
 
-	public function setData($name, $value)
+	public function getItems($type = null, $message = null)
 	{
-		$this->_data[$name] = $value;
+
 	}
 
 #---------------------------------------------------------------------------------------------------------
