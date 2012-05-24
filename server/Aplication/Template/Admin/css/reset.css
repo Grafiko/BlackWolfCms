@@ -17,12 +17,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 /* links */
 a { text-decoration: none; outline: none; cursor: pointer; }
 a:hover { text-decoration: none; }
+strong {font-weight:bold;}
 .pointer { cursor:pointer; }
 .abs { position:absolute;top:auto;left:auto;right:auto;bottom:auto; }
 
 /* other */
 .bold {font-weight:bold !important;}
 .hidden {display:none;}
+.dNone {display:none;}
 
 /* opacity */
 .opacity10 {opacity: .10;filter:Alpha(Opacity=10);}
@@ -37,40 +39,48 @@ a:hover { text-decoration: none; }
 .opacity100 {opacity: .100;filter:Alpha(Opacity=100);}
 
 /* width: */
-.w25 {width: 25px !important;}
-.w50 {width: 50px !important;}
-.w75 {width: 75px !important;}
-.w100 {width: 100px !important;}
-.w125 {width: 125px !important;}
-.w150 {width: 150px !important;}
-.w175 {width: 175px !important;}
-.w200 {width: 200px !important;}
-.w225 {width: 225px !important;}
-.w250 {width: 250px !important;}
-.w275 {width: 275px !important;}
-.w290 {width: 290px !important;}
-.w300 {width: 300px !important;}
-.w325 {width: 325px !important;}
-.w350 {width: 350px !important;}
-.w375 {width: 375px !important;}
-.w400 {width: 400px !important;}
+.w25 {width:25px !important;}
+.w50 {width:50px !important;}
+.w75 {width:75px !important;}
+.w100 {width:100px !important;}
+.w125 {width:125px !important;}
+.w150 {width:150px !important;}
+.w175 {width:175px !important;}
+.w200 {width:200px !important;}
+.w225 {width:225px !important;}
+.w250 {width:250px !important;}
+.w275 {width:275px !important;}
+.w290 {width:290px !important;}
+.w300 {width:300px !important;}
+.w325 {width:325px !important;}
+.w350 {width:350px !important;}
+.w375 {width:375px !important;}
+.w400 {width:400px !important;}
 
 /* height */
-.h25 {height: 25px !important;}
-.h50 {height: 50px !important;}
-.h75 {height: 75px !important;}
-.h100 {height: 100px !important;}
-.h125 {height: 125px !important;}
-.h150 {height: 150px !important;}
-.h175 {height: 175px !important;}
-.h200 {height: 200px !important;}
-.h225 {height: 225px !important;}
-.h250 {height: 250px !important;}
-.h275 {height: 275px !important;}
-.h300 {height: 300px !important;}
+.h0 {height:0px !important;}
+.h1 {height:1px !important;}
+.h4 {height:4px !important;}
+.h8 {height:8px !important;}
+.h12 {height:12px !important;}
+.h16 {height:16px !important;}
+.h25 {height:25px !important;}
+.h50 {height:50px !important;}
+.h75 {height:75px !important;}
+.h100 {height:100px !important;}
+.h125 {height:125px !important;}
+.h150 {height:150px !important;}
+.h175 {height:175px !important;}
+.h200 {height:200px !important;}
+.h225 {height:225px !important;}
+.h250 {height:250px !important;}
+.h275 {height:275px !important;}
+.h300 {height:300px !important;}
 
 
 .corner16-all { -moz-border-radius: 16px; -webkit-border-radius: 16px; border-radius: 16px; }
+.mt32 {margin-top:32px !important;}
+.mt24 {margin-top:24px !important;}
 .mt16 {margin-top:16px !important;}
 .mt12 {margin-top:12px !important;}
 .mt10 {margin-top:10px !important;}
@@ -80,10 +90,11 @@ a:hover { text-decoration: none; }
 .mt1 {margin-top:1px !important;}
 .mt0 {margin-top:0px !important;}
 
-.mb32 {margin-bottom:32px;}
-.mb16 {margin-bottom:16px;}
-.mb12 {margin-bottom:12px;}
-.mb10 {margin-bottom:10px;}
+.mb32 {margin-bottom:32px !important;}
+.mb24 {margin-bottom:24px !important;}
+.mb16 {margin-bottom:16px !important;}
+.mb12 {margin-bottom:12px !important;}
+.mb10 {margin-bottom:10px !important;}
 .mb8 {margin-bottom:8px !important;}
 .mb4 {margin-bottom:4px !important;}
 .mb5 {margin-bottom:5px !important;}
@@ -92,6 +103,7 @@ a:hover { text-decoration: none; }
 .mb0 {margin-bottom:0px !important;}
 
 .mr32 {margin-right:32px !important;}
+.mr24 {margin-right:24px !important;}
 .mr16 {margin-right:16px !important;}
 .mr12 {margin-right:12px !important;}
 .mr10 {margin-right:10px !important;}
@@ -103,6 +115,8 @@ a:hover { text-decoration: none; }
 .mr1 {margin-right:1px !important;}
 .mr0 {margin-right:0px !important;}
 
+.ml32 {margin-left:32px !important;}
+.ml24 {margin-left:24px !important;}
 .ml16 {margin-left:16px !important;}
 .ml12 {margin-left:12px !important;}
 .ml10 {margin-left:10px !important;}
@@ -113,12 +127,3 @@ a:hover { text-decoration: none; }
 .ml2 {margin-left:2px !important;}
 .ml1 {margin-left:1px !important;}
 .ml0 {margin-left:0px !important;}
-
-.h16 {height:16px;}
-.h12 {height:12px;}
-.h8 {height:8px;}
-.h4 {height:4px;}
-.h1 {height:1px;}
-.h0 {height:0px;}
-
-.dNone {display:none;}

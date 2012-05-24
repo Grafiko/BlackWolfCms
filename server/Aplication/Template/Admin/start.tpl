@@ -17,8 +17,10 @@
 	<div id="container">
 		<div id="top">
 			<div class="left">
-				<div class="logo"><img src="/asset/admin/image/logo.png" /></div>
-				{$TOP_LEFT}
+				<div class="logo">
+					<img src="/asset/admin/image/logo.png" />
+				</div>
+				<div class="cLanguage">{$LANGUAGE}</div>
 			</div>
 			<div class="middle">{$CLOCK}</div>
 			<div class="right">{$TOP_MENU}</div>

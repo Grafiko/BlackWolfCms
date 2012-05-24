@@ -1,15 +1,12 @@
-{bw_css dir="/library/fancybox/" name="jquery.fancybox-1.3.4"}
-{bw_css name="cloak"}
-{bw_css name="style"}
-{bw_css name="reset"}
-{bw_css dir="/library/jquery/" name="jquery-ui-1.8.16.custom"}
+{bw_css dir="/library/fancybox-1.3.4/default/" file="style.css"}
+{bw_css file="jquery-ui-1.8.20.custom.css"}
+{bw_css file="style.css"}
+{bw_css file="reset.css"}
 
-{bw_js dir="/library/fancybox/" name="jquery.fancybox-1.3.4.pack"}
-{bw_js dir="/library/jquery/" name="common"}
-{bw_js dir="/library/tmpl/" name="jquery.tmpl.min"}
-{bw_js dir="/library/jquery/" name="jquery-ui-fix"}
-{bw_js dir="/library/jquery/" name="jquery-ui-1.8.16.custom.min"}
-{bw_js dir="/library/jquery/" name="1.6.4.min"}
+{bw_js dir="/library/fancybox-1.3.4/" file="jquery.fancybox-1.3.4.pack.js"}
+{bw_js dir="/library/jquery/" file="jquery.cookie.js"}
+{bw_js dir="/library/jquery/" file="jquery-ui-1.8.20.custom.min.js"}
+{bw_js dir="/library/jquery/" file="jquery-1.7.2.min.js"}
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Tarnsitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,21 +20,16 @@
 
 		<div id="top">
 			<div class="left">
-				<div class="logo"><img src="{$PATH.IMG}logo2.png" /></div>
-			</div>
-			<div class="middle">
-				<div id="clockbase">
-	    			<div id="hours"></div>
-	    			<div id="minutes"></div>
-	    			<div id="seconds"></div>
+				<div class="logo">
+					<img src="/asset/admin/image/logo.png" />
 				</div>
+				<div class="cLanguage">{$LANGUAGE}</div>
 			</div>
+			<div class="middle">{$CLOCK}</div>
 			<div class="right">{$MENU_TOP}</div>
 		</div>
 
-		<div id="messages">
-			{$MESSAGES}
-		</div>
+		{$MESSAGES}
 
 		<div id="middle" class="tab">
 			<div class="left">

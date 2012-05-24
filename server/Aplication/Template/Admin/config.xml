@@ -4,9 +4,12 @@
 		<files public_path="/asset/admin">
 			<css>reset.css</css>
 			<css>style.css</css>
+			<css>jquery-ui-1.8.20.custom.css</css>
 			<image>logo.png</image>
 			<image>fieldsBg.png</image>
 			<image>btnOrange_small.png</image>
+			<image>btnOrange_bigMini.png</image>
+			<image>lineTopbg.png</image>
 		</files>
 	</tpl>
 </configdata>
