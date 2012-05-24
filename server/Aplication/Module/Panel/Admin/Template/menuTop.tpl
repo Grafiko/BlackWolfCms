@@ -26,7 +26,7 @@ $(document).ready(function() {
 	$('ul', $panelMenuTop).each(function() {
 		$panelMenuTopAllUlWidth+= $(this).outerWidth(true);
 	});
-	console.log($panelMenuTopAllUlWidth);
+	//console.log($panelMenuTopAllUlWidth);
 });
 </script>
 

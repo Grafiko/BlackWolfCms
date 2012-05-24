@@ -79,4 +79,17 @@ class Module_Panel_Admin extends Module_Admin implements Module_AdminInterface
 	}
 
 #---------------------------------------------------------------------------------------------------------
+
+	public function tpl_iFrame($tpl_data = array())
+	{
+		$tpl_data = array(
+			'CONTENT' => isset($tpl_data['CONTENT'])?$tpl_data['CONTENT']:null
+		);
+
+		$this->addToDisplay(
+			$this->render('iFrame.tpl', $tpl_data, $this->_path_tpl_start)
+		);
+	}
+
+#---------------------------------------------------------------------------------------------------------
 }
