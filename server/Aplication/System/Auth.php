@@ -18,7 +18,7 @@ class System_Auth
 	public static function Login($redirect = null)
 	{
 		$_translate = self::_initTranslate();
-		$_result = array('isLogin', 'msg');
+		$_result = array('login' => false, 'message' => null);
 
 		$f        = new Zend_Filter_StripTags();
 		$login    = $f->filter(System_Url::getPost('_email'));
@@ -52,19 +52,19 @@ class System_Auth
 					case System_Auth::USER_NOACTIV:
 						Zend_Auth::getInstance()->clearIdentity();
 						$_result['login'] = false;
-						$_result['msg'] = $_translate->_('this_account_has_not_been_activated_yet');
+						$_result['message'] = $_translate->_('this_account_has_not_been_activated_yet');
 						break;
 
 					case System_Auth::USER_BLOCKED:
 						Zend_Auth::getInstance()->clearIdentity();
 						$_result['login'] = false;
-						$_result['msg'] = $_translate->_('this_account_has_been_blocked');
+						$_result['message'] = $_translate->_('this_account_has_been_blocked');
 						break;
 
 					case System_Auth::USER_DELETED:
 						Zend_Auth::getInstance()->clearIdentity();
 						$_result['login'] = false;
-						$_result['msg'] = $_translate->_('sorry_this_account_has_been_deleted');
+						$_result['message'] = $_translate->_('sorry_this_account_has_been_deleted');
 						break;
 				}
 			} else {
@@ -83,8 +83,8 @@ class System_Auth
 			$oUserArchiveLogin->save();
 		}
 
-		if(!$_result['login'] && empty($_result['msg'])) {
-			$_result['msg'] = $_translate->_('the_specified_username_or_password_is_incorrect');
+		if(!$_result['login'] && empty($_result['message'])) {
+			$_result['message'] = $_translate->_('the_specified_username_or_password_is_incorrect');
 		}
 
 		return $_result;
