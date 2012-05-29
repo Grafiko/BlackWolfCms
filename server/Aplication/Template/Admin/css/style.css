@@ -76,35 +76,12 @@ div.section_box>div .buttons {margin:24px 0 0 0;}
 
 
 /*********************************************************************************************************
-*** System messages
+*** Window popup
 *********************************************************************************************************/
-ul.system_messages {overflow:hidden;margin:12px 52px 6px 52px;}
-ul.system_messages>li {overflow:hidden;position:relative;margin:6px 0;}
-ul.system_messages>li>.icon {position:absolute;display:block;top:0px;left:0px;}
-ul.system_messages>li>.btnClose {position:absolute;display:block;width:7px;height:7px;top:20px;right:15px;background: transparent url('../image/messageBtnClose.png') no-repeat right top;}
-ul.system_messages>li>.top {height:18px;padding-left:55px;}
-ul.system_messages>li>.top>span {display:block;height:100%;background: transparent url('../image/messagesRight.png') no-repeat right top;}
-ul.system_messages>li>.middle {padding-left:55px;}
-ul.system_messages>li>.middle>span {display:block;height:100%;padding:0 41px 0 13px;font:normal 12px/14px Tahoma;color:#ffffff;background: transparent url('../image/messagesRightY.png') repeat-y right top;}
-ul.system_messages>li>.bottom {height:18px;padding-left:55px;}
-ul.system_messages>li>.bottom>span {display:block;height:100%;background: transparent url('../image/messagesRight.png') no-repeat right -18px;}
-
-ul.system_messages>li.ok>.top {background: transparent url('../image/messagesLeft.png') no-repeat left top;}
-ul.system_messages>li.ok>.middle {background: transparent url('../image/messagesLeftOkY.png') repeat-y left top;}
-ul.system_messages>li.ok>.bottom {background: transparent url('../image/messagesLeft.png') no-repeat left -18px;}
-ul.system_messages>li.ok>.icon {width:24px;height:23px;top:13px;left:15px;background: transparent url('../image/messagesIcoOk.png') no-repeat left top;}
-ul.system_messages>li.warning>.top {background: transparent url('../image/messagesLeft.png') no-repeat left -36px;}
-ul.system_messages>li.warning>.middle {background: transparent url('../image/messageLeftWarningY.png') repeat-y left top;}
-ul.system_messages>li.warning>.bottom {background: transparent url('../image/messagesLeft.png') no-repeat left -54px;}
-ul.system_messages>li.warning>.icon {width:4px;height:24px;top:11px;left:25px;background: transparent url('../image/messagesIcoWarning.png') no-repeat left top;}
-ul.system_messages>li.error>.top {background: transparent url('../image/messagesLeft.png') no-repeat left -72px;}
-ul.system_messages>li.error>.middle {background: transparent url('../image/messageLeftErrorY.png') repeat-y left top;}
-ul.system_messages>li.error>.bottom {background: transparent url('../image/messagesLeft.png') no-repeat left -90px;}
-ul.system_messages>li.error>.icon {width:18px;height:16px;top:18px;left:18px;background: transparent url('../image/messagesIcoError.png') no-repeat left top;}
-ul.system_messages>li.info>.top {background: transparent url('../image/messagesLeft.png') no-repeat left -108px;}
-ul.system_messages>li.info>.middle {background: transparent url('../image/messageLeftInfoY.png') repeat-y left top;}
-ul.system_messages>li.info>.bottom {background: transparent url('../image/messagesLeft.png') no-repeat left -126px;}
-ul.system_messages>li.info>.icon {width:8px;height:20px;top:14px;left:24px;background: transparent url('../image/messagesIcoInfo.png') no-repeat left top;}
+.overlay {z-index:998; position:absolute; top:0; left:0; width:100%; height:100%; background-color: #000000; }
+.window {z-index:999; border: 1px solid orange;}
+.window>.title {height:64px; font: 17px/64px Impact; padding-left:75px; color:orange; background: #000000 url('../image/iframe_logo.png') no-repeat 12px 7px;}
+.window>.content {min-height:50px; height:50px; padding:20px; background: #ffffff url('../image/iframe_contentBg.png') no-repeat right bottom;}
 
 
 /*********************************************************************************************************
@@ -248,8 +225,8 @@ ul.panelLeft>li.title {width:100%;height:23px; margin:0; padding:0; border:0 non
 *********************************************************************************************************/
 ul.panelLeft {overflow:hidden;border:1px solid #000000;padding:12px 7px;}
 ul.panelLeft>li {padding-top:10px;}
-ul.panelLeft>li.line {height:1px;overflow:hidden;padding:0px 0 0px 0;background: url('../image/tree/line.png') no-repeat right top;}
-ul.panelLeft>li.title {width:100%;height:23px; margin:0; padding:0; border:0 none; font:12px/21px Tahoma; text-align:center;text-transform:uppercase;color:#ffffff;background:url('../image/menuLeft_TitleBg.png') no-repeat left top;}
+ul.panelLeft>li.line {height:1px;overflow:hidden;padding:0px 0 0px 0;background: url('../image/treeStructure/line.png') no-repeat right top;}
+ul.panelLeft>li.title {width:100%;height:23px; margin:0; padding:0; border:0 none; font:12px/21px Tahoma; text-align:center;text-transform:uppercase;color:#ffffff;background:url('../image/treeStructure/titleBg.png') no-repeat left top;}
 
 
 /*********************************************************************************************************
@@ -257,14 +234,15 @@ ul.panelLeft>li.title {width:100%;height:23px; margin:0; padding:0; border:0 non
 *********************************************************************************************************/
 .structurePath {color:#333333;font-size:11px;}
 .structurePath>tbody>tr>td>table>tbody tr>td {vertical-align:top;padding-bottom:3px;}
+.structurePath>tbody>tr>td>table>tbody tr>td a.minus {display:block;width:16px;height:16px;background: url('../image/treeStructure/minus.png') no-repeat center top;}
 .structurePath>tbody>tr>td>table>tbody tr>td.title {padding-left:5px;vertical-align:top;}
 .structurePath>tbody>tr>td>table>tbody tr>td.title>a {display:block;margin:2px 0;}
 .structurePath>tbody>tr>td>table>tbody tr>td.icon {width:32px;}
 .structurePath>tbody>tr>td>table>tbody tr>td.icon.current {padding-bottom:10px;}
-.structurePath>tbody>tr>td>table>tbody tr>td.icon.folder {background: url('../image/tree/pathFolder.png') no-repeat right top;}
-.structurePath>tbody>tr>td>table>tbody tr>td.icon.folderDisabled {background: url('../image/tree/pathFolderDisabled.png') no-repeat right top;}
-.structurePath>tbody>tr>td>table>tbody tr>td.icon.blogTopic {background: url('../image/tree/pathBlogTopic.png') no-repeat right top;}
-.structurePath>tbody>tr>td>table>tbody tr>td.icon.blogTopicDisabled {background: url('../image/tree/pathBlogTopicDisabled.png') no-repeat right top;}
+.structurePath>tbody>tr>td>table>tbody tr>td.icon.folder {background: url('../image/treeStructure/pathFolder.png') no-repeat right top;}
+.structurePath>tbody>tr>td>table>tbody tr>td.icon.folderDisabled {background: url('../image/treeStructure/pathFolderDisabled.png') no-repeat right top;}
+.structurePath>tbody>tr>td>table>tbody tr>td.icon.blogTopic {background: url('../image/treeStructure/pathBlogTopic.png') no-repeat right top;}
+.structurePath>tbody>tr>td>table>tbody tr>td.icon.blogTopicDisabled {background: url('../image/treeStructure/pathBlogTopicDisabled.png') no-repeat right top;}
 .structurePath>tbody>tr>td>table>tbody tr>td.icon.first {width:16px;}
 .structurePath>tbody>tr>td>table>tbody tr>td.icon a {width:16px;height:16px;display:block;}
 .structurePath a {color:#454e53;}
@@ -274,19 +252,21 @@ ul.panelLeft>li.title {width:100%;height:23px; margin:0; padding:0; border:0 non
 
 .structureItems {color:#333333;font-size:11px;}
 .structureItems>tbody>tr>td>table>tbody tr>td {vertical-align:top;padding-bottom:3px;}
+.structureItems>tbody>tr>td>table>tbody tr>td a.plus {display:block;width:16px;height:16px;background: url('../image/treeStructure/plus.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td a.null {display:block;width:16px;height:16px;background: url('../image/treeStructure/null.png') no-repeat center top;}
 .structureItems>tbody>tr>td>table>tbody tr>td.icon {width:16px;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.folder {background: url('../image/tree/itemFolder.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.folderDisabled {background: url('../image/tree/itemFolderDisabled.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.article {background: url('../image/tree/itemArticle.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.articleDisabled {background: url('../image/tree/itemArticleDisabled.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.photo {background: url('../image/tree/itemPhoto.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.photoDisabled {background: url('../image/tree/itemPhotoDisabled.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.tpl {background: url('../image/tree/itemTpl.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.tplDisabled {background: url('../image/tree/itemTplDisabled.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopic {background: url('../image/tree/itemBlogTopic.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopicDisabled {background: url('../image/tree/itemBlogTopicDisabled.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopicContent {background: url('../image/tree/itemBlogTopicContent.png') no-repeat center top;}
-.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopicContentDisabled {background: url('../image/tree/itemBlogTopicContentDisabled.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.folder {background: url('../image/treeStructure/itemFolder.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.folderDisabled {background: url('../image/treeStructure/itemFolderDisabled.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.article {background: url('../image/treeStructure/itemArticle.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.articleDisabled {background: url('../image/treeStructure/itemArticleDisabled.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.photo {background: url('../image/treeStructure/itemPhoto.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.photoDisabled {background: url('../image/treeStructure/itemPhotoDisabled.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.tpl {background: url('../image/treeStructure/itemTpl.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.tplDisabled {background: url('../image/treeStructure/itemTplDisabled.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopic {background: url('../image/treeStructure/itemBlogTopic.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopicDisabled {background: url('../image/treeStructure/itemBlogTopicDisabled.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopicContent {background: url('../image/treeStructure/itemBlogTopicContent.png') no-repeat center top;}
+.structureItems>tbody>tr>td>table>tbody tr>td.icon.blogTopicContentDisabled {background: url('../image/treeStructure/itemBlogTopicContentDisabled.png') no-repeat center top;}
 .structureItems>tbody>tr>td>table>tbody tr>td.title {padding-left:5px;vertical-align:middle;}
 .structureItems a {color:#454e53;}
 .structureItems a.edit,
@@ -342,13 +322,7 @@ div.paging > a.current {color:#696969;}
 div.paging > a > span {font-size:11px; }
 
 
-/*********************************************************************************************************
-*** Window popup
-*********************************************************************************************************/
-.overlay {z-index:998; position:absolute; top:0; left:0; width:100%; height:100%; background-color: #000000; }
-.window {z-index:999; border: 1px solid orange;}
-.window>.title {height:64px; font: 17px/64px Impact; padding-left:75px; color:orange; background: #000000 url('../image/wilk.png') no-repeat 12px 7px;}
-.window>.content {min-height:50px; height:50px; padding:20px; background: #ffffff url('../image/window_contentBg.png') no-repeat right bottom;}
+
 
 
 /*** SWFUpload Object Styles ***/

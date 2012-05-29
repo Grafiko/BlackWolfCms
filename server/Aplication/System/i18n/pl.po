@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: System\n"
 "POT-Creation-Date: 2012-05-09 15:04+0100\n"
-"PO-Revision-Date: 2012-05-21 12:42+0100\n"
+"PO-Revision-Date: 2012-05-29 18:26+0100\n"
 "Last-Translator: Tomasz Juśkiewicz <tomasz.juskiewicz@grafiko.pl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,6 +14,33 @@ msgstr ""
 "X-Poedit-Country: POLAND\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
+msgid "add"
+msgstr "Dodaj"
+
+msgid "yes"
+msgstr "Tak"
+
+msgid "no"
+msgstr "Nie"
+
+msgid "yes_delete"
+msgstr "Tak, usuń"
+
+msgid "no_cancel"
+msgstr "Nie, anuluj"
+
+msgid "sequence"
+msgstr "Kolejność"
+
+msgid "delete"
+msgstr "usuń"
+
+msgid "cancel"
+msgstr "anuluj"
+
+msgid "save"
+msgstr "zapisz"
+
 msgid "save_changes"
 msgstr "zapisz zmiany"
 
@@ -22,4 +49,22 @@ msgstr "testuj połączenie"
 
 msgid "auxiliary_menu"
 msgstr "Menu pomocnicze"
+
+msgid "parent"
+msgstr "Rodzic"
+
+msgid "no_parent"
+msgstr "brak rodzica"
+
+msgid "is_activ"
+msgstr "Aktywna"
+
+msgid "select"
+msgstr "wybierz"
+
+msgid "category_structure"
+msgstr "struktura kategorii"
+
+msgid "confirmation_of_removal"
+msgstr "Potwierdzenie usunięcia:"
 

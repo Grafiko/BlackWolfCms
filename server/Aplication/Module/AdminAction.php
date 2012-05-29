@@ -26,6 +26,13 @@ abstract class Module_AdminAction
 
 #---------------------------------------------------------------------------------------------------------
 
+	public function getModule()
+	{
+		return $this->module;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	public function getData($name)
 	{
 		if (isset($this->_data[$name])) {

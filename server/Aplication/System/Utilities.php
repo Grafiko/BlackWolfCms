@@ -65,6 +65,7 @@ class System_Utilities
 		}
 
 		$folder = preg_split( "/[\\\\\/]/" , $path);
+		$mkfolder = DS;
 		$mkfolder = '';
 		for ($i=0; isset($folder[$i]); $i++) {
 			if (!strlen(trim($folder[$i])))

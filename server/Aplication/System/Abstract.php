@@ -3,6 +3,7 @@ abstract class System_Abstract
 {
 	protected $_root_class_files;
 	protected $_translate;
+	public $_redirect = false;
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -79,6 +80,15 @@ abstract class System_Abstract
 		header('Content-Type: application/json');
 		echo Zend_Json::encode($json, Zend_Json::TYPE_OBJECT);
 		exit;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function checkRedirect()
+	{
+		if ($this->_redirect) {
+			System_Url::redirect($this->_redirect);
+		}
 	}
 
 #---------------------------------------------------------------------------------------------------------

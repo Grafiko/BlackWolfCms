@@ -25,7 +25,7 @@ class System_Tpl
 
 	public static function checkConfig($tpl_file_path = null)
 	{
-		if (preg_match('/' . System_Utilities::_addslashes(ROOT_APLICATION_TEMPLATE) . '/', $tpl_file_path)) {
+		if (strpos($tpl_file_path, ROOT_APLICATION_TEMPLATE) !== false) {
 			return self::checkConfigStartTpl($tpl_file_path);
 		} else {
 			return self::checkConfigModuleTpl($tpl_file_path);
@@ -36,9 +36,9 @@ class System_Tpl
 
 	private static function checkConfigStartTpl($tpl_file_path = null)
 	{
-		if (preg_match('/' . System_Utilities::_addslashes(ROOT_APLICATION_TEMPLATE_ADMIN) . '/', $tpl_file_path)) {
+		if (strpos($tpl_file_path, ROOT_APLICATION_TEMPLATE_ADMIN) !== false) {
 			$md5_tpl_file_path = md5(ROOT_APLICATION_TEMPLATE_ADMIN);
-		} elseif (preg_match('/' . System_Utilities::_addslashes(ROOT_APLICATION_TEMPLATE_SITE) . '/', $tpl_file_path)) {
+		} elseif (strpos($tpl_file_path, ROOT_APLICATION_TEMPLATE_SITE) !== false) {
 			$md5_tpl_file_path = md5(ROOT_APLICATION_TEMPLATE_SITE);
 		} else {
 			return;
@@ -71,12 +71,21 @@ class System_Tpl
 						}
 
 						foreach ($config->tpl->files->children() as $type => $file) {
-							$root_current = $root_config . DS . $type;
-							$root_destination = ROOT . DS . $public_path . DS . $type;
+							$root_current = $root_config . DS . $type . DS . $file;
+							$root_current = str_replace(array('/', '\''), DS, $root_current);
+
+							$root_destination = ROOT . DS . $public_path . DS . $type . DS . $file;
 							$root_destination = str_replace(array('/', '\''), DS, $root_destination);
-							System_Utilities::mkdirRecursive($root_destination);
-							if (file_exists($root_current . DS . $file)) {
-								copy($root_current . DS . $file,  $root_destination . DS . $file);
+
+//-----------------> Utworzenie ścieżki katalogów dla pliku
+							$tmp = explode(DS, $root_destination);
+							unset($tmp[count($tmp)-1]);
+							implode(DS, $tmp);
+							System_Utilities::mkdirRecursive(implode(DS, $tmp));
+
+							if (file_exists($root_current)) {
+								//echo $root_current . ' ' .$root_destination;
+								copy($root_current,  $root_destination);
 							}
 						}
 						$cacheTemplate['public_path'] = $public_path;
@@ -129,12 +138,20 @@ class System_Tpl
 							}
 
 							foreach ($tpl->files->children() as $type => $file) {
-								$root_current = $root_config . DS . $tpl_dir_name . DS . $type;
-								$root_destination = ROOT . DS . $public_path . DS . $type;
+								$root_current = $root_config . DS . $tpl_dir_name . DS . $type . DS . $file;
+								$root_current = str_replace(array('/', '\''), DS, $root_current);
+
+								$root_destination = ROOT . DS . $public_path . DS . $type . DS . $file;
 								$root_destination = str_replace(array('/', '\''), DS, $root_destination);
-								System_Utilities::mkdirRecursive($root_destination);
-								if (file_exists($root_current . DS . $file)) {
-									copy($root_current . DS . $file,  $root_destination . DS . $file);
+
+//--------------------> Utworzenie ścieżki katalogów dla pliku
+								$tmp = explode(DS, $root_destination);
+								unset($tmp[count($tmp)-1]);
+								implode(DS, $tmp);
+								System_Utilities::mkdirRecursive(implode(DS, $tmp));
+//echo '<br />' .$root_current . '<br />';
+								if (file_exists($root_current)) {
+									copy($root_current,  $root_destination);
 								}
 							}
 							$cacheTemplate['public_path'] = $public_path;

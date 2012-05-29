@@ -6,21 +6,25 @@ abstract class Module_Abstract extends System_Abstract
 	protected $_hash;
 	private $_data;
 
+// Język który aktualnie podlega edycji
+	protected $_i18n;
+
 #---------------------------------------------------------------------------------------------------------
 
 	public function __construct($action = null)
 	{
 		parent::__construct();
 
+//--> Ustawienie zmiennych
+		$this->_page = System_Url::getGP('page', 1);
+		$this->_hash = System_Url::getGP('hash');
+		$this->_i18n = System_Url::getGP('i18n', Module_Language_Model_Language_Mapper::getDefaultSiteLanguage()->code);
+
 //--> Inicjowanie modułu
 		$this->__init();
 
 //--> Sprawdzenie czy istnieje akcja do wykonania
 		$this->checkModuleAction($action);
-
-//--> Ustawienie zmiennych
-		$this->_page = System_Url::getGP('page', 1);
-		$this->_hash = System_Url::getGP('hash');
 	}
 
 #---------------------------------------------------------------------------------------------------------

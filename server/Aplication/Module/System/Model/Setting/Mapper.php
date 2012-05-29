@@ -1,7 +1,7 @@
 <?php
 class Module_System_Model_Setting_Mapper extends Db_Mapper_Abstract
 {
-	protected static $_dbModuleModelName = 'System_Model_Setting';
+	protected static $_dbModelName = 'Module_System_Model_Setting';
 
 #---------------------------------------------------------------------------------------------------------
 

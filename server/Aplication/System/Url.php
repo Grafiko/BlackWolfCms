@@ -87,6 +87,19 @@ class System_Url
 
 #---------------------------------------------------------------------------------------------------------
 
+	public static function getRunParams($extends_params = array())
+	{
+		$instance = self::getInstance();
+		$params = $instance->params;
+
+		if (count($extends_params) > 0) {
+			$params = array_merge($params, $extends_params);
+		}
+		return $params;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	public static function getPageName()
 	{
 		$instance = self::getInstance();
@@ -154,6 +167,8 @@ class System_Url
 				}
 			}
 		}
+		//Zend_Debug::dump($this->params);
+		//exit;
 	}
 
 #---------------------------------------------------------------------------------------------------------

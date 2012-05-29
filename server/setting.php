@@ -9,7 +9,7 @@ $loader->setFallbackAutoloader(true);
 $loader->pushAutoloader('Smarty', 'smartyAutoload');
 
 // Load Config
-$config = new Zend_Config_Ini(ROOT_APLICATION_SYSTEM . DS . 'config.ini', (is_readable('server')?file_get_contents('server'):'local_tomek'));
+$config = new Zend_Config_Ini(ROOT_APLICATION_SYSTEM . DS . 'config.ini', (is_readable('server')?'server':'local_tomek'));
 Zend_Registry::set('config', $config);
 
 // Setting DataBase

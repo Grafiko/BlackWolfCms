@@ -1,6 +1,6 @@
 {bw_css file="style.css"}
 
-<ul class="menuLeft {if !$LAST}mb12{/if}">
+<ul class="menuLeft mb12">
 	<li class="title">{$oMenuLeft->getName()}</li>
 	{foreach $oMenuLeft->getItems() as $oMenuLeftItem}
 	{if !$oMenuLeftItem->isHidden()}

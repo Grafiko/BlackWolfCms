@@ -1,0 +1,12 @@
+/*********************************************************************************************************
+*** Language - selectionWhenEditingItem
+*********************************************************************************************************/
+.selectionLanguageWhenEditItem {overflow:hidden;height:24px;margin:0 0 16px;padding:0 20px;background:transparent url('../image/bg.png') no-repeat left top;}
+.selectionLanguageWhenEditItem>.name {float:left;margin:0 8px 0 0;font:bold 12px/24px Tahoma;color:#ffffff;}
+.selectionLanguageWhenEditItem>ul {float:left;height:24px;}
+.selectionLanguageWhenEditItem>ul>li {display:block;float:left;width:32px;height:24px;border-right:1px solid #000000;text-align:center;background:transparent url('../image/flagBg.png') no-repeat left top;}
+.selectionLanguageWhenEditItem>ul>li>a {display:block;width:100%;height:24px;border-bottom:1px solid #494b4b;color:#959595;}
+.selectionLanguageWhenEditItem>ul>li>a>span {}
+.selectionLanguageWhenEditItem>ul>li>a>span.flag {display:block;float:left;width:32px;height:24px;padding:0 1px 0 0;border-right:1px solid #494b4b;text-align:center;}
+.selectionLanguageWhenEditItem>ul>li.activ>a,
+.selectionLanguageWhenEditItem>ul>li>a:hover {color:#ffffff;background-color:#111212;}

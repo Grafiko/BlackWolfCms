@@ -10,4 +10,16 @@
 			<image>en.png</image>
 		</files>
 	</tpl>
+	<tpl name="selectionWhenEditingItem.tpl">
+		<files public_path="/asset/admin/language/selectionWhenEditingItem">
+			<css>style.css</css>
+			<image>flagBg.png</image>
+			<image>bg.png</image>
+			<image>pl.png</image>
+			<image>en.png</image>
+			<image>de.png</image>
+			<image>ru.png</image>
+			<image>sk.png</image>
+		</files>
+	</tpl>
 </configdata>

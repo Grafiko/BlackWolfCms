@@ -1,6 +1,8 @@
 <?php
 class Module_Panel_Model_MenuItem_Mapper extends Db_Mapper_Abstract
 {
+	protected static $_dbModelName = 'Module_Panel_Model_MenuItem';
+
 #---------------------------------------------------------------------------------------------------------
 
 	public static function findByCategoryId($category_id = null)

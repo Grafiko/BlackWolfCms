@@ -34,4 +34,30 @@ class Module_Language_Admin extends Module_Admin implements Module_AdminInterfac
 	}
 
 #---------------------------------------------------------------------------------------------------------
+
+	public function view_languageSelectionWhenEditingItem()
+	{
+		$current_language = System_Url::getGP('i18n', null);
+
+		$oLanguageRowset = Module_Language_Model_Language_Mapper::getSiteAvailableLanguages();
+		foreach ($oLanguageRowset as $oLanguage) {
+			if (
+					($current_language !== null AND $oLanguage->code == $current_language) ||
+					($current_language === null AND $oLanguage->is_default)
+				) {
+				$oLanguage->_isCurrent = true;
+			} else {
+				$oLanguage->_isCurrent = false;
+			}
+		}
+
+		$tpl_data = array(
+			'oLanguageRowset' => $oLanguageRowset
+		);
+
+		$result = $this->render('selectionWhenEditingItem.tpl', $tpl_data);
+		return $result;
+	}
+
+#---------------------------------------------------------------------------------------------------------
 }

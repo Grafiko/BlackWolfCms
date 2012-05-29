@@ -1,0 +1,10 @@
+body {
+	font: 12px/12px Tahoma;
+	min-width:0;
+	background: none;
+}
+.iframe.error {padding-bottom:10px; margin-bottom:10px;; border-bottom:1px solid orange;font-size:13px;color:red; font-weight:bold;}
+.confirmWindow {width:400px; text-align:center; overflow:hidden;}
+.confirmWindow .txt {padding-bottom:15px;line-height:14px;}
+.confirmWindow .title {margin:0 0 16px;padding:10px 0;border-top:1px solid #cc6600;border-bottom:1px solid #cc6600;color:#cc6600;font-size:14px;font-weight:bold;line-height:16px;}
+.confirmWindow .warning {margin:0 0 16px;color:red;font-size:11px;font-weight:bold;line-height:14px;}

@@ -92,4 +92,17 @@ class Module_Panel_Admin extends Module_Admin implements Module_AdminInterface
 	}
 
 #---------------------------------------------------------------------------------------------------------
+
+	public function tpl_iFrameRedirect($tpl_data = array())
+	{
+		$tpl_data = array(
+			'REDIRECT' => isset($tpl_data['REDIRECT'])?$tpl_data['REDIRECT']:null
+		);
+
+		$this->addToDisplay(
+			$this->render('iFrame_redirect.tpl', $tpl_data, $this->_path_tpl_start)
+		);
+	}
+
+#---------------------------------------------------------------------------------------------------------
 }

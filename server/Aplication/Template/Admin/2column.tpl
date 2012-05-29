@@ -4,12 +4,13 @@
 {bw_css file="reset.css"}
 
 {bw_js dir="/library/fancybox-1.3.4/" file="jquery.fancybox-1.3.4.pack.js"}
+{bw_js file="library.js"}
 {bw_js dir="/library/jquery/" file="jquery.cookie.js"}
 {bw_js dir="/library/jquery/" file="jquery-ui-1.8.20.custom.min.js"}
 {bw_js dir="/library/jquery/" file="jquery-1.7.2.min.js"}
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Tarnsitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
 <head>
 	{bw_metadata action="display"}
 </head>
@@ -45,7 +46,6 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('.centerElements').centerElements();
-			$('#messages').bwMessages();
 			$("a.lb").fancybox({
 				titlePosition: 'over',
 				overlayColor: '#000',
@@ -54,7 +54,6 @@
 				transitionIn: 'elastic',
 				transitionOut: 'elastic'
 			});
-			cssClock('hours', 'minutes', 'seconds');
 		});
 	</script>
 </body>

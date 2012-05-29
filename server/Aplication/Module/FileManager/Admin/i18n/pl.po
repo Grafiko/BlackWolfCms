@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Module_System_FileManager\n"
+"POT-Creation-Date: 2012-05-09 15:04+0100\n"
+"PO-Revision-Date: 2012-05-29 18:48+0100\n"
+"Last-Translator: Tomasz Juśkiewicz <tomasz.juskiewicz@grafiko.pl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid "the_list_of_files"
+msgstr "Lista plików"
+
+msgid "all_files"
+msgstr "Wszystkie pliki"
+
+msgid "add_a_new_files"
+msgstr "Dodaj nowe pliki"
+
+msgid "add_a_new_category"
+msgstr "Dodaj nową kategorię"
+
+msgid "file_manager_add_new_category"
+msgstr "Menadżer plików - Dodanie nowej kategorii"
+
+msgid "file_manager_edit_category"
+msgstr "Menadżer plików - Edycja kategorii"
+
+msgid "category_name"
+msgstr "Nazwa kategorii"
+
+msgid "log_new_category"
+msgstr "<a href='%s'>Menadżer plików</a>: dodano nową kategorię <strong>%s</strong>"
+
+msgid "log_update_category"
+msgstr "<a href='%s'>Menadżer plików</a>: kategoria <strong>%s</strong> została zaktualizowana w wersji %s"
+
+msgid "are_you_sure_you_want_to_delete_the_following_category_of_files"
+msgstr "Czy jesteś pewien, że chcesz usunąć następującą kategorię plików?"
+
+msgid "warning_if_this_category_contains_files_or_sub-categories_will_also_be_removed"
+msgstr "UWAGA! Jeżeli w tej kategorii znajdują się pliki bądź podkategorie, zostaną one również usunięte."
+
+msgid "log_delete_category"
+msgstr "<a href='%s'>Menadżer plików</a>: kategoria <strong>%s</strong> została usunięta."
+
+msgid "log_delete_error_category"
+msgstr "<a href='%s'>Menadżer plików</a>: próba usunięcia kategorii <strong>%s</strong> nie powiodła się."
+
+msgid "log_delete_noexists_category"
+msgstr "<a href='%s'>Menadżer plików</a>: próba usunięcia kategorii nie powiodła się, ponieważ wybrana kategoria nie istnieje."
+

@@ -68,6 +68,12 @@ class System_Aplication
 			$_session->setExpirationSeconds();
 		}
 
+//--> Ustawienia CACHE dla bazy danych
+		$frontendOptions = array('lifetime' => NULL, 'automatic_serialization' => true);
+		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_CACHE_DB);
+		$cache = Zend_Cache::factory('Output', 'File', $frontendOptions, $backendOptions);
+		Zend_Registry::set('cache_db', $cache);
+
 //--> Ustawienia CACHE dla plików *.tpl
 		$frontendOptions = array('lifetime' => 1, 'automatic_serialization' => true);
 		$backendOptions = array('cache_dir' => ROOT_APLICATION_TEMP_TPL_CACHE);

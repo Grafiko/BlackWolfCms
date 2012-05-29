@@ -46,6 +46,13 @@ class Plugin_Tabs_Item
 
 #---------------------------------------------------------------------------------------------------------
 
+	public function addContent($content)
+	{
+		$this->content = $this->content . $content;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
 	public function setContent($content)
 	{
 		$this->content = $content;

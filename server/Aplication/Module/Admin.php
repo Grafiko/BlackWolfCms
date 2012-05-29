@@ -37,4 +37,21 @@ abstract class Module_Admin extends Module_Abstract
 	}
 
 #---------------------------------------------------------------------------------------------------------
+
+	public function checkRedirectFrame()
+	{
+		if ($this->_redirect) {
+			$tpl_data = array(
+				'REDIRECT' => $this->_redirect
+			);
+
+//-----> Pobranie wstępnego szablonu dla przekierowania iFrame
+			$modulePanelAdmin = $this->getModule('Module_Panel_Admin');
+			$modulePanelAdmin->tpl_iFrameRedirect($tpl_data);
+			echo $modulePanelAdmin->getModuleResult();
+			exit;
+		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
 }

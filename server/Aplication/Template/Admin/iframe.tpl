@@ -1,10 +1,12 @@
-{bw_css name="iframe"}
-{bw_css name="style"}
-{bw_css name="reset"}
+{bw_css file="iframe.css"}
+{bw_css file="jquery-ui-1.8.20.custom.css"}
+{bw_css file="style.css"}
+{bw_css file="reset.css"}
 
-{bw_js dir="/library/jquery/" name="common"}
-{bw_js dir="/library/jquery/" name="jquery-ui-1.8.16.custom.min"}
-{bw_js dir="/library/jquery/" name="1.6.2.min"}
+{bw_js file="library.js"}
+{bw_js dir="/library/jquery/" file="jquery.cookie.js"}
+{bw_js dir="/library/jquery/" file="jquery-ui-1.8.20.custom.min.js"}
+{bw_js dir="/library/jquery/" file="jquery-1.7.2.min.js"}
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Tarnsitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
