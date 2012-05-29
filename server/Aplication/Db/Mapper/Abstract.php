@@ -1,22 +1,18 @@
 <?php
 abstract class Db_Mapper_Abstract
 {
-	//protected static $_dbModuleModelName;
-
 #---------------------------------------------------------------------------------------------------------
 
 	public static function getDbTableClassName()
 	{
-		//echo $className = get_class(static);
-		//exit;
-		$_tmp = explode('_', static::$_dbModuleModelName);
+		$_tmp = explode('_', static::$_dbModelName);
 		for($i=0,$ln=count($_tmp); $i<$ln; $i++) {
 			$_tmp[$i] = ucfirst($_tmp[$i]);
 		}
 
-		$_dbModuleModelName = implode('_', $_tmp);
+		$_dbModelName = implode('_', $_tmp);
 
-		$_dbTableName = 'Module_' . $_dbModuleModelName . '_DbTable';
+		$_dbTableName = $_dbModelName . '_DbTable';
 		return $_dbTableName;
 	}
 
@@ -30,6 +26,28 @@ abstract class Db_Mapper_Abstract
 		return $dbTable->createRow();
 	}
 
+#---------------------------------------------------------------------------------------------------------
+
+	public static function findById($id, $language = null)
+	{
+		$dbTable_className = static::getDbTableClassName();
+
+		$dbTable = new $dbTable_className();
+
+		if ($language !== null) {
+			$dbTable->setLanguage($language);
+		}
+
+		$result = $dbTable->find($id);
+
+		if (0 == count($result)) {
+			return null;
+		}
+
+		$row = $result->current();
+
+		return $row;
+	}
 
 #---------------------------------------------------------------------------------------------------------
 

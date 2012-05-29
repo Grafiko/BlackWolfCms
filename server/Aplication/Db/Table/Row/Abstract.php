@@ -5,6 +5,7 @@ abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 	protected $_isValid = false;
 	protected $_errors = array();
 	protected $_stored = false;
+	protected $_translate;
 
 #---------------------------------------------------------------------------------------------------------
 
@@ -31,7 +32,7 @@ abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 			$value = parent::__get($columnName);
 		} else {
 			if (!array_key_exists($columnName, $this->_mData)) {
-            throw new Exception("Nie istnieje \"{$columnName}\"");
+			    throw new Exception("Nie istnieje \"{$columnName}\"");
 			}
 			$value = $this->_mData[$columnName];
 		}
@@ -62,7 +63,7 @@ abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 		if (array_key_exists($this->_transformColumn($columnName), $this->_data)) {
 			parent::__set($columnName, $value);
 		} else {
-        $this->_mData[$columnName] = $value;
+			$this->_mData[$columnName] = $value;
 		}
 	}
 
@@ -96,6 +97,33 @@ abstract class Db_Table_Row_Abstract extends Zend_Db_Table_Row_Abstract
 		} else {
 				return false;
 		}
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	public function getTranslate()
+	{
+		if (false === ($this->_translate instanceof System_Translate_Zend)) {
+			$this->_initTranslate();
+		}
+
+		return $this->_translate;
+	}
+
+#---------------------------------------------------------------------------------------------------------
+
+	protected function _initTranslate()
+	{
+		$_model_class_files = ROOT_APLICATION;
+		$className = get_class($this);
+		$_tmp = explode('_', $className);
+		unset($_tmp[count($_tmp)-1]);
+
+		foreach ($_tmp as $key=>$value) {
+			$_model_class_files.= DS . $value;
+		}
+
+		$this->_translate = System_Translate::get($_model_class_files . DS . 'i18n');
 	}
 
 #---------------------------------------------------------------------------------------------------------
